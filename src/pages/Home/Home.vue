@@ -2,28 +2,20 @@
   <div class='home'>
       <top-nav :title="name"></top-nav>
       <div class="main-ct">
-          <img class="banner-ct" src="http://mz.djmall.xmisp.cn//files//banner//20161222//148238831285.png"></img>
+          <img class="banner-ct" :src="bannerUlr"></img>
           <div class="icons-ct">
-              <div class="icons-item">韩束</div>
-              <div class="icons-item">雪肌精</div>
-              <div class="icons-item">SK-II</div>
-              <div class="icons-item">innisfree</div>
+              <div class="icons-item" v-for="(item,index) in pingList" :key="index">
+                  <img :src="item"/>
+              </div>
           </div>
           <div class="topic-ct">
-              <p class="topic-title">热门专题</p>
-              <router-link to="/topic">
+              <p class="topic-title">今日特卖</p>
+              <router-link to="/topic" v-for="(item,index) in hotTopic" :key="index">
                 <div class="topic-item">
-                <img class="topic-img" src="http://mz.djmall.xmisp.cn//files//banner//20161219//148211980641.png"/>
-                <p class="name">杨亚宇全攻略洁面产品</p>
-                <p class="time">仅限5月17日-5月19日</p>
-              </div>
-              </router-link>
-              <router-link to="/topic">
-                <div class="topic-item">
-                <img class="topic-img" src="http://mz.djmall.xmisp.cn//files//banner//20161222//14823895573.png"/>
-                <p class="name">杨亚宇全攻略洁面产品</p>
-                <p class="time">仅限5月17日-5月19日</p>
-              </div>
+                    <img class="topic-img" :src="item.imgUrl"/>
+                    <p class="name">{{item.name}}</p>
+                    <p class="time">{{item.time}}</p>
+                </div>
               </router-link>
           </div>
       </div>
@@ -37,8 +29,34 @@ export default {
   name: 'HelloWorld',
   data () {
     return {
-      name: 'home',
-      msg: 'i am home'
+      name: '首页',
+      bannerUlr: 'http://b.vimage1.com/upload/mst/2017/11/04/139/23b96f0e89abed2d9415e848fc3715ff_604x290_80.jpg',
+      pingList: ['http://img.alicdn.com/tps/i2/TB1qtTcGVXXXXXnXpXXSutbFXXX.jpg_140x140Q50s50.jpg',
+        'http://img.alicdn.com/tps/i2/T1uLZuFX0bXXb1upjX.jpg_140x140Q50s50.jpg',
+        'http://img.alicdn.com/tps/i2/TB1mHqvGXXXXXavXpXXSutbFXXX.jpg_140x140Q50s50.jpg',
+        'http://img.alicdn.com/tps/i2/T1mWLhFTBaXXb1upjX.jpg_140x140Q50s50.jpg'
+      ],
+      hotTopic: [{
+        imgUrl: 'http://a.vimage1.com/upload/brand//upcb/2017/10/31/141/ias_150944373875129_604x290_80.jpg',
+        name: 'SK-II化妆品专场',
+        time: '仅限11月7日-11月30日'
+      }, {
+        imgUrl: 'http://a.vimage1.com/upload/brand//upcb/2017/10/12/148/ias_150777161492603_604x290_80.jpg',
+        name: '膜法世家·1908护肤品专场',
+        time: '仅限11月7日-11月30日'
+      }, {
+        imgUrl: 'http://a.vimage1.com/upload/brand//upcb/2017/10/24/102/ias_150883120949985_604x290_80.jpg',
+        name: '玉兰油OLAY护肤品专场',
+        time: '仅限11月7日-11月30日'
+      }, {
+        imgUrl: 'http://a.vimage1.com/upload/brand//upcb/2017/10/11/172/ias_150769399748474_604x290_80.jpg',
+        name: '雪肌精化妆品专场',
+        time: '仅限11月7日-11月30日'
+      }, {
+        imgUrl: 'http://a.vimage1.com/upload/brand//upcb/2017/10/24/41/ias_150883813874658_604x290_80.jpg',
+        name: 'MAKE UP FOR EVER玫珂菲彩妆专场',
+        time: '仅限11月7日-11月30日'
+      }]
     }
   },
   components: {TopNav},
@@ -53,9 +71,8 @@ export default {
 <style lang="less" scoped>
 .home{
     .main-ct{
-        background-color: #dbdbdb;
+        background-color: #e6e6e6;
         .banner-ct{
-            height: 2.4rem;
             width: 100%;
             background-color: #707070;
         }
@@ -68,6 +85,9 @@ export default {
             .icons-item{
                 flex: 1;
                 font-size: .3rem;
+                img{
+                    width: 60px;
+                }
             }
         }
         .topic-ct{
@@ -83,10 +103,8 @@ export default {
                 padding: 0 .3rem;
                 border-bottom: 1px solid #eee;
                 .topic-img{
-                    width: 100%;
-                    height: 2.4rem;
                     margin-top: .3rem;
-                    // border: 1px solid red;
+                    width: 100%;
                 }
                 .name{
                     margin-top: .3rem;

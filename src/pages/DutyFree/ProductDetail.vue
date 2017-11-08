@@ -3,15 +3,26 @@
         <top-nav :title="name"></top-nav>
         <div class="main-ct">
             <div class="top-ct">
-                <div class="swpier-ct"></div>
+                <div class="swpier-ct">
+                    <img :src="productInfo.headImgUrl">
+                </div>
                 <div class="title-ct">
-                    <p class="name">兰芝兰芝兰芝 类d 带回家 端口似累死李老师 的话</p>
-                    <p class="count">￥1829</p>
+                    <p class="name">{{productInfo.name}}</p>
+                    <p class="count">￥{{productInfo.count}}</p>
                 </div>
             </div>
             <div class="detail-ct">
                 <second-title msg="商品详情" class="second-t"></second-title>
+                <div class="product-img-ct">
+                    <img v-for="(detail,index) in productInfo.detailImg" :key=index  :src="detail"/>
+                </div>
             </div>
+        </div>
+        <div class="bottom-ct">
+            <div class="count-of-car">
+                <i class="icon iconfont icon-cart"></i>
+            </div>
+            <div class="submit-box">加入购物车</div>
         </div>
   </div>
 </template>
@@ -25,7 +36,22 @@ export default {
   data () {
     return {
       name: '商品详情',
-      msg: 'I am productDetail'
+      msg: 'I am productDetail',
+      productInfo: {
+        headImgUrl: 'http://a.vimage1.com/upload/merchandise/pdcvis/2017/08/16/75/a8b5302f-bdb8-487b-9845-de9e60478679_384x484_70.jpg',
+        name: '巨遮瑕清透水润气垫BB（自然色）',
+        count: '298',
+        detailImg: [
+          'http://a.vimage1.com/upload/merchandise/pdcvis/2017/08/16/175/cc7a3be0-28e5-4a3c-b15c-135b5820b1fd.jpg',
+          'http://a.vimage1.com/upload/merchandise/pdcvis/2017/08/16/40/6c98b525-f933-4f92-888d-eb15934ed061.jpg',
+          'http://a.vimage1.com/upload/merchandise/pdcvis/2017/08/16/73/4413ff20-cd1a-4ee9-8a0e-f214f0a5272e.jpg',
+          'http://a.vimage1.com/upload/merchandise/pdcvis/2017/08/16/13/7a562bb7-ec00-4a26-856e-20bf4a2f13be.jpg',
+          'http://a.vimage1.com/upload/merchandise/pdcvis/2017/08/16/158/2583153c-7bce-4158-9026-3bba69f04f67.jpg',
+          'http://a.vimage1.com/upload/merchandise/pdcvis/2017/08/16/54/4489f2c0-ca83-4ad3-a2fb-3703c9e7fbe5.jpg',
+          'http://a.vimage1.com/upload/merchandise/pdcvis/2017/08/16/59/d188bf24-eb57-416b-a7f8-987222034dbc.jpg',
+          'http://a.vimage1.com/upload/merchandise/pdcvis/2017/08/16/66/508bf06e-5a42-41d4-9cd8-17fa8787ec12.jpg'
+        ]
+      }
     }
   },
   components: {TopNav, SecondTitle}
@@ -37,9 +63,12 @@ export default {
     .main-ct{
         .top-ct{
             .swpier-ct{
-                height: 3rem;
+                overflow: hidden;
                 width: 100%;
-                border: 1px solid #ddd;
+                height: auto;
+                vertical-align: middle;
+                img{
+                }
             }
             .title-ct{
                 padding: .4rem;
@@ -60,6 +89,41 @@ export default {
             .second-t{
                 padding: .3rem 0;
             }
+            .product-img-ct{
+                font-size: 0;
+                img{
+                    width: 100%;
+                    vertical-align: middle;
+                    // transform-origin: 0px 0px 0px;
+                    // opacity: 1;
+                    // transform: scale(1,1);
+                }
+            }
+        }
+    }
+    .bottom-ct{
+        position: fixed;
+        display: flex;
+        justify-content: space-around;
+        z-index: 10;
+        padding: .2rem;
+        width: 100%;
+        bottom: 0;
+        border:1px solid red;
+        background-color: #fff;
+        .count-of-car{
+            border: 1px solid #ddd;
+            flex: 0 0 2rem;
+            width: 1.6rem;
+            padding: .2rem;
+            .icon-cart{
+                font-size: 24px;
+            }
+        }
+        .submit-box{
+            background-color: #e6e6e6;
+            padding: .3rem;
+            flex: 1;
         }
     }
 }

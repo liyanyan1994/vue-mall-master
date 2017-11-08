@@ -69,7 +69,8 @@ export default {
                     font-size:28px;
                 }
                  span{
-                    font-size: .08rem;
+                    margin-top: 3px;
+                    font-size: 14px;
                 }
             }
         }
