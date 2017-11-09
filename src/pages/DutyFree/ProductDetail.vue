@@ -19,10 +19,12 @@
             </div>
         </div>
         <div class="bottom-ct">
-            <div class="count-of-car">
-                <i class="icon iconfont icon-cart"></i>
+            <div class="bottom-inner">
+                 <div class="count-of-car">
+                    <i class="icon iconfont icon-cart"></i>
+                </div>
+                <div class="submit-box">加入购物车</div>
             </div>
-            <div class="submit-box">加入购物车</div>
         </div>
   </div>
 </template>
@@ -68,6 +70,7 @@ export default {
                 height: auto;
                 vertical-align: middle;
                 img{
+                    width: 100%;
                 }
             }
             .title-ct{
@@ -94,36 +97,38 @@ export default {
                 img{
                     width: 100%;
                     vertical-align: middle;
-                    // transform-origin: 0px 0px 0px;
-                    // opacity: 1;
-                    // transform: scale(1,1);
                 }
             }
         }
     }
     .bottom-ct{
         position: fixed;
-        display: flex;
-        justify-content: space-around;
-        z-index: 10;
-        padding: .2rem;
-        width: 100%;
+        left: 0;
         bottom: 0;
-        border:1px solid red;
+        width: 100%;
+        z-index: 10;
         background-color: #fff;
-        .count-of-car{
-            border: 1px solid #ddd;
-            flex: 0 0 2rem;
-            width: 1.6rem;
+        .bottom-inner{
             padding: .2rem;
-            .icon-cart{
-                font-size: 24px;
+            display: flex;
+            .count-of-car{
+                border: 1px solid #ddd;
+                flex: 0 0 2rem;
+                width: 2rem;
+                height: 1rem;
+                line-height: 1rem;
+                box-sizing: border-box;
+                .icon-cart{
+                    font-size: 24px;
+                }
             }
-        }
-        .submit-box{
-            background-color: #e6e6e6;
-            padding: .3rem;
-            flex: 1;
+            .submit-box{
+                flex: 1;
+                height: 1rem;
+                line-height: 1rem;
+                color: #fff;
+                background-color: #f44336;
+            }
         }
     }
 }

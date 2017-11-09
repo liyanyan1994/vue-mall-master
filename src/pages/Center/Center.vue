@@ -35,7 +35,7 @@
                         </router-link>
                     </li>
                     <li class="more-item">
-                        <router-link class="more-link" to="">
+                        <router-link class="more-link" to="/cart">
                             <p class="title">我的购物车</p>
                             <i class="icon iconfont icon-more"></i>
                         </router-link>
