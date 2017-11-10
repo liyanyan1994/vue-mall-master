@@ -2,7 +2,12 @@
   <div class='home'>
       <top-nav :title="name"></top-nav>
       <div class="main-ct">
-          <img class="banner-ct" :src="bannerUlr"></img>
+          <!-- <img class="banner-ct" :src="bannerUlr[0]"></img> -->
+          <div class="banner-ct">
+                <mt-swipe :auto="5000">
+                    <mt-swipe-item v-for="(banner, index) in bannerUlr" :key="index"><img :src="banner" alt=""></mt-swipe-item>
+               </mt-swipe>
+          </div>
           <div class="icons-ct">
               <div class="icons-item" v-for="(item,index) in pingList" :key="index">
                   <img :src="item"/>
@@ -25,12 +30,17 @@
 <script>
 import {mapState} from 'vuex'
 import TopNav from '@/components/TopNav/TopNav'
+// import {Swipe, SwipeItem} from 'mint-ui'
+
 export default {
   name: 'HelloWorld',
   data () {
     return {
       name: '首页',
-      bannerUlr: 'http://b.vimage1.com/upload/mst/2017/11/04/139/23b96f0e89abed2d9415e848fc3715ff_604x290_80.jpg',
+      bannerUlr: ['http://b.vimage1.com/upload/mst/2017/11/09/185/3a33d0f8bd05226ff1ccf77ac551ec25_604x290_80.jpg',
+        'http://b.vimage1.com/upload/mst/2017/11/04/139/23b96f0e89abed2d9415e848fc3715ff_604x290_80.jpg',
+        'http://b.vimage1.com/upload/mst/2017/11/09/79/db80a964d68929ee76f44244dd2d52d7_604x290_80.jpg'
+      ],
       pingList: ['http://img.alicdn.com/tps/i2/TB1qtTcGVXXXXXnXpXXSutbFXXX.jpg_140x140Q50s50.jpg',
         'http://img.alicdn.com/tps/i2/T1uLZuFX0bXXb1upjX.jpg_140x140Q50s50.jpg',
         'http://img.alicdn.com/tps/i2/TB1mHqvGXXXXXavXpXXSutbFXXX.jpg_140x140Q50s50.jpg',
@@ -74,7 +84,10 @@ export default {
         background-color: #e6e6e6;
         .banner-ct{
             width: 100%;
-            background-color: #707070;
+            height: 3.4rem;
+            img{
+                width: 100%;
+            }
         }
         .icons-ct{
             display: flex;

@@ -38,11 +38,12 @@ export default {
     .left{
         flex: 1;
         position: relative;
+        box-sizing: border-box;
         height: 1rem;
         line-height: 1rem;
-        background-color: #fff;
-        text-align: left;
         padding-left: .3rem;
+        text-align: left;
+        background-color: #fff;
         .heji{
             color: #333;
         }

@@ -3,8 +3,8 @@
     <top-nav :title="name"></top-nav>
         <div class="main-ct">
             <div class="head-ct">
-                <img class="header-img"/>
-                <p class="name">Name I</p>
+                <img class="header-img" :src="headImgUrl"/>
+                <p class="name">{{userName}}</p>
             </div>
             <div class="status-ct">
                 <div class="will-pay">
@@ -60,7 +60,9 @@ export default {
   data () {
     return {
       name: '我的',
-      msg: 'I am Center'
+      msg: 'I am Center',
+      userName: '狠狠ai妮',
+      headImgUrl: 'http://upic.vimage1.com/2016/12/23/3395/b49d03de4fa4aed0b28805ad1600b561.jpg'
     }
   },
   components: {TopNav}
@@ -76,9 +78,9 @@ export default {
             border-bottom: 1px solid #ddd;
             background-color: #fff;
             .header-img{
-                width: 30px;
-                height: 30px;
-                margin-top: 30px;
+                width: 1.2rem;
+                height: 1.2rem;
+                margin-top: .6rem;
                 border: 1px solid #ddd;
                 border-radius: 50%;
             }

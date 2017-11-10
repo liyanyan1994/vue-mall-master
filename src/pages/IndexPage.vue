@@ -14,7 +14,7 @@
                 <span>免税店</span>
             </div>
         </router-link>
-        <router-link to="/cart">
+        <router-link :to="{path:'/cart',activeClass:'bottom-nav-class'}">
             <div>
                 <i class="icon iconfont icon-cart"/>
                 <span>购物车</span>
@@ -60,6 +60,11 @@ export default {
         a{
             flex: 1;
             padding: .16rem 0;
+            &.router-link-active{
+                >span{
+                    color: red;
+                }
+            }
             div{
                 display: flex;
                 flex-direction: column;
