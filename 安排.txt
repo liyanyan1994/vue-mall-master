@@ -4,3 +4,30 @@
 2017-11-09
     
     1.用mintUI 加入购物车的弹出层
+
+2017-11-17
+  1.构建mysql数据库、建表
+    本地数据库test用户名root 密码password
+
+  2.使用proxy解决开发的跨域问题 
+    参考https://segmentfault.com/a/1190000011715088
+
+  3.对axios请求进行一次封装
+    新建utils下的func.js 
+        export default {
+            axiosGet (api, cb) {
+                axios.get(api)
+                .then(cb)
+                .catch(err => {
+                console.log(err)
+                })
+            },
+            axiosPost (api, post, cb) {
+                axios.post(api, post)
+                .then(cb)
+                .catch(err => {
+                console.log(err)
+                })
+            }
+        }
+    在组建中直接import就可以使用

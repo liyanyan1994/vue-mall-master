@@ -54,6 +54,7 @@
 
 <script>
 import TopNav from '@/components/TopNav/TopNav'
+import func from '@/utils/func'
 
 export default {
   name: 'center',
@@ -61,8 +62,20 @@ export default {
     return {
       name: '我的',
       msg: 'I am Center',
-      userName: '狠狠ai妮',
-      headImgUrl: 'http://upic.vimage1.com/2016/12/23/3395/b49d03de4fa4aed0b28805ad1600b561.jpg'
+      userName: '',
+      headImgUrl: ''
+    }
+  },
+  created () {
+    this.getUserInfo(1)
+  },
+  methods: {
+    getUserInfo (id) {
+      func.axiosGet('/userInfo?id=' + id, response => {
+        const returnObj = response.data[0]
+        this.userName = returnObj.name
+        this.headImgUrl = returnObj.imgUrl
+      })
     }
   },
   components: {TopNav}
