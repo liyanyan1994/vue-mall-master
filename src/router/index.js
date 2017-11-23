@@ -24,8 +24,9 @@ export default new Router({
       component: resolve => require(['@/pages/Center/Center'], resolve)
     }]
   }, {
-    path: '/topic',
-    component: resolve => require(['@/pages/Home/Topic'], resolve)
+    path: '/productList/:id',
+    name: 'productList',
+    component: resolve => require(['@/pages/Home/ProductList'], resolve)
   }, {
     path: '/confirmOrder',
     name: 'confirmOrder',

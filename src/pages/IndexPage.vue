@@ -1,6 +1,8 @@
 <template>
   <div class="indexPage">
-    <router-view></router-view>
+    <keep-alive>
+        <router-view></router-view>
+    </keep-alive>
     <div class="bottom-nav">
         <router-link to="/home">
             <div>

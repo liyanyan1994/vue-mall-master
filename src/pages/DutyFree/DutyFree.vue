@@ -198,13 +198,13 @@ export default {
                     }
                     .name{
                         font-size: 14px;
-                        text-indent: 10px;
-                        text-align: center;
+                        // text-indent: 10px;
+                        // text-align: center;
                     }
                     .count{
                         font-size: 16px;
                         color: #f44336;
-                        text-align: center;
+                        // text-align: center;
                     }
                 }
             }

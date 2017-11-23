@@ -1,9 +1,9 @@
 <template>
   <div class="dutyFree">
-        <top-nav :title="name"></top-nav>
-        <div class="main-ct">
+    <top-nav :title="name"></top-nav>
+    <div class="main-ct">
 
-        </div>
+    </div>
   </div>
 </template>
 

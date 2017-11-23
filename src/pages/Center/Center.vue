@@ -97,9 +97,6 @@ export default {
                 border: 1px solid #ddd;
                 border-radius: 50%;
             }
-            .name{
-
-            }
         }
         .status-ct{
             display: flex;

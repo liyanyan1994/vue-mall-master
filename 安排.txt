@@ -31,3 +31,5 @@
             }
         }
     在组建中直接import就可以使用
+
+    4.添加店铺的列表ProductList
