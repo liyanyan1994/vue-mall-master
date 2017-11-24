@@ -61,22 +61,29 @@ import ConfirmBtn from '@/components/CommonBtn/ConfirmBtn'
 import SecondTitle from '@/components/SecondTitle/SecondTitle'
 import AddReduceBtn from '@/components/StyleCommon/AddReduceBtn'
 import { Popup } from 'mint-ui'
-
+import { mapGetters } from 'vuex'
 export default {
   name: 'dutyFree',
   data () {
     return {
       name: '商品详情',
       msg: 'I am productDetail',
-      popupVisible: false,
-      productInfo: {}
+      popupVisible: false
+    //   productInfo: {}
     }
   },
   components: {TopNav, SecondTitle, Popup, AddReduceBtn, ConfirmBtn},
   created () {
-    this.productInfo = this.$route.params.detailObj
+    // this.productInfo = this.$route.params.detailObj
+    // console.log(this.productInfo)
   },
   computed: {
+    ...mapGetters({
+      productInfo: 'goodDetail'
+    }),
+    // productInfo () {
+    //   return this.$store.state.productList[0]
+    // },
     detailImgUrl () {
       return this.productInfo.detailImg.split(',')
     }

@@ -23,28 +23,31 @@
 
 <script>
 import TopNav from '@/components/TopNav/TopNav'
-import func from '@/utils/func'
+import { mapState } from 'vuex'
 
 export default {
   name: 'dutyFree',
   data () {
     return {
-      name: '免税店',
-      msg: 'I am dutyFree',
-      productList: null
+      name: '商品列表',
+      msg: 'I am dutyFree'
     }
   },
   created () {
-    console.log(this.$route.params.id)
-    this.getProductById(this.$route.params.id)
+    this.$store.dispatch('getAllProducts')
+  },
+  computed: {
+    ...mapState({
+      productList: 'productList'
+    })
+    // productList () {
+    //   return this.$store.state.todos.filter(todo => todo.done).length
+    // }
   },
   methods: {
-    getProductById (id) {
-      func.axiosGet('/getProductsById?id=' + id, response => {
-        this.productList = response.data
-      })
-    },
     toProductDetail (obj) {
+      console.log('id=' + obj.id)
+      this.$store.dispatch('chooseGoodId', obj.id)
       this.$router.push({name: 'productDetail', params: {detailObj: obj}})
     }
   },

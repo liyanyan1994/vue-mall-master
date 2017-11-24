@@ -33,3 +33,6 @@
     在组建中直接import就可以使用
 
     4.添加店铺的列表ProductList
+
+     2017/11/24
+    5.使用vuex获取productList的数据和点击进入Productdetail详情的数据，使用了getters(一刷新数据就没有了)

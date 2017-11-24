@@ -14,7 +14,7 @@
           </div>
           <div class="topic-ct">
               <second-title msg="今日特卖" class="topic-title"></second-title>
-              <router-link :to="{ path: '/productList/' + item.id}" v-for="(item,index) in hotTopic" :key="index">
+              <router-link :to="{ path: '/productList/' + item.id}" v-for="(item,index) in hotTopic" :key="index" @click.native="productId(item.id)">
                 <div class="topic-item">
                     <img class="topic-img" :src="item.imgUrl"/>
                     <p class="name">{{item.msg}}</p>
@@ -59,6 +59,9 @@ export default {
       func.axiosGet('/saleProducts', response => {
         this.hotTopic = response.data
       })
+    },
+    productId (id) {
+      this.$store.dispatch('chooseProduct', id)
     }
   },
   components: {TopNav, SecondTitle},
