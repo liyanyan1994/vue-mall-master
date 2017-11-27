@@ -47,209 +47,216 @@
                 </div>
                 <div class="popup-three">
                     <div>购买数量</div>
-                    <add-reduce-btn :goodNum="1"></add-reduce-btn>
+                    <add-reduce-btn :goodNum="productInfo.num" @cartGoodAdd="goodAdd" @cartGoodReduce="goodReduce"></add-reduce-btn>
                 </div>
             </div>
-            <confirm-btn class="popup-btn" @click.native="toCart"></confirm-btn>
+            <confirm-btn class="popup-btn" @click.native="toCart(productInfo)"></confirm-btn>
         </mt-popup>
   </div>
 </template>
 
 <script>
-import TopNav from '@/components/TopNav/TopNav'
-import ConfirmBtn from '@/components/CommonBtn/ConfirmBtn'
-import SecondTitle from '@/components/SecondTitle/SecondTitle'
-import AddReduceBtn from '@/components/StyleCommon/AddReduceBtn'
-import { Popup } from 'mint-ui'
-import { mapGetters } from 'vuex'
+import TopNav from "@/components/TopNav/TopNav";
+import ConfirmBtn from "@/components/CommonBtn/ConfirmBtn";
+import SecondTitle from "@/components/SecondTitle/SecondTitle";
+import AddReduceBtn from "@/components/StyleCommon/AddReduceBtn";
+import { Popup } from "mint-ui";
+import { mapGetters } from "vuex";
 export default {
-  name: 'dutyFree',
-  data () {
+  name: "dutyFree",
+  data() {
     return {
-      name: '商品详情',
-      msg: 'I am productDetail',
+      name: "商品详情",
+      msg: "I am productDetail",
       popupVisible: false
-    //   productInfo: {}
-    }
+      //   productInfo: {}
+    };
   },
-  components: {TopNav, SecondTitle, Popup, AddReduceBtn, ConfirmBtn},
-  created () {
-    // this.productInfo = this.$route.params.detailObj
-    // console.log(this.productInfo)
+  components: { TopNav, SecondTitle, Popup, AddReduceBtn, ConfirmBtn },
+  created() {
+    if (this.$route.params.detailObj.id) {
+      this.$store.dispatch("getGoodDetail", this.$route.params.detailObj.id);
+    }
   },
   computed: {
     ...mapGetters({
-      productInfo: 'goodDetail'
+      productInfo: "goodDetail"
     }),
-    // productInfo () {
-    //   return this.$store.state.productList[0]
-    // },
-    detailImgUrl () {
-      return this.productInfo.detailImg.split(',')
+    detailImgUrl() {
+      if (this.productInfo.detailImg) {
+        return this.productInfo.detailImg.split(",");
+      }
     }
   },
   methods: {
-    showBottom () {
-      console.log('enen')
-      this.popupVisible = true
+    showBottom() {
+      this.popupVisible = true;
     },
-    toCart () {
-      this.$router.push({path: '/cart'})
+    goodAdd() {
+      this.$store.dispatch("cartGoodAdd", this.productInfo.id);
+    },
+    goodReduce() {
+      console.log(this.productInfo.id);
+      this.$store.dispatch("cartGoodReduce", this.productInfo.id);
+    },
+    toCart(p) {
+      this.$store.dispatch("addToCart", p);
+      this.$router.push({ path: "/cart" });
     }
   }
-}
+};
 </script>
 
 <style  lang="less" scoped>
-.productDetail{
-    .main-ct{
-        .top-ct{
-            .swpier-ct{
-                overflow: hidden;
-                width: 100%;
-                height: auto;
-                vertical-align: middle;
-                img{
-                    width: 100%;
-                }
-            }
-            .title-ct{
-                padding: .4rem;
-                background-color: #fff;
-                .name{
-                    font-size: 16px;
-                    margin-bottom: .1rem;
-                }
-                .count{
-                    color: #f44336;
-                    font-size: 16px;
-                }
-            }
-        }
-        .detail-ct{
-            margin-top: .3rem;
-            background-color: #fff;
-            .second-t{
-                padding: .3rem 0;
-            }
-            .product-img-ct{
-                font-size: 0;
-                img{
-                    width: 100%;
-                    vertical-align: middle;
-                }
-            }
-        }
-    }
-    .bottom-ct{
-        position: fixed;
-        left: 0;
-        bottom: 0;
+.productDetail {
+  .main-ct {
+    .top-ct {
+      .swpier-ct {
+        overflow: hidden;
         width: 100%;
-        z-index: 10;
-        background-color: #fff;
-        .bottom-inner{
-            padding: .2rem;
-            display: flex;
-            .count-of-car{
-                border: 1px solid #ddd;
-                flex: 0 0 2rem;
-                width: 2rem;
-                height: 1rem;
-                line-height: 1rem;
-                box-sizing: border-box;
-                .icon-cart{
-                    font-size: 24px;
-                }
-            }
-            .submit-box{
-                flex: 1;
-                height: 1rem;
-                line-height: 1rem;
-                color: #fff;
-                background-color: #f44336;
-            }
+        height: auto;
+        vertical-align: middle;
+        img {
+          width: 100%;
         }
-    }
-    .popup{
-      width: 100%;
-      height: 70%;
-      padding: .2rem;
-      .popup-ct{
-        position: relative;
-        width: 100%;
-        background-color: #fff;
-        .popup-one{
-            display: flex;
-            position: relative;
-            justify-content: flex-start;
-            align-items: flex-start;
-            padding-bottom: .3rem;
-            border-bottom: 1px solid #ddd;
-            .img-ct{
-                height: 2rem;
-                width: 2rem;
-                margin-top: -0.5rem;
-                margin-left: .1rem;
-                border: 1px solid #ddd;
-                border-radius: 3px;
-                img{
-                    width: 100%;
-                    height: 100%;
-                }
-            }
-            .pro-guige{
-                margin-left: 10px;
-                padding: .1rem;
-                text-align: left;
-                .count{
-                    color: #f44336;
-                    font-size: 16px;
-                }
-            }
-            .close-ct{
-                position: absolute;
-                right: .2rem;
-                .iconfont{
-                    font-size: 24px;
-                }
-            }
-          }
-          .popup-two{
-              padding: .1rem .3rem;
-              border-bottom: 1px solid #ddd;
-              text-align: left;
-              .title{
-                  margin-bottom: .1rem;
-              }
-              .size-div{
-                  width: 1rem;
-                  height: .5rem;
-                  margin-bottom: .1rem;
-                  line-height: .5rem;
-                  display: inline-block;
-                  text-align: center;
-                  color: #f44336;
-                  border: 1px solid #ddd;
-                  border-radius: 5px;
-              }
-          }
-          .popup-three{
-              display: flex;
-              justify-content: space-between;
-              align-items: center;
-              padding: .3rem;
-              border-bottom: 1px solid #ddd;
-          }
       }
-      .popup-btn{
-              position: absolute;
-              width: 100%;
-              left: 0;
-              bottom: 0;
-              background-color: #f44336;
-              color: #fff;
-          }  
+      .title-ct {
+        padding: 0.4rem;
+        background-color: #fff;
+        .name {
+          font-size: 16px;
+          margin-bottom: 0.1rem;
+        }
+        .count {
+          color: #f44336;
+          font-size: 16px;
+        }
+      }
     }
+    .detail-ct {
+      margin-top: 0.3rem;
+      background-color: #fff;
+      .second-t {
+        padding: 0.3rem 0;
+      }
+      .product-img-ct {
+        font-size: 0;
+        img {
+          width: 100%;
+          vertical-align: middle;
+        }
+      }
+    }
+  }
+  .bottom-ct {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    z-index: 10;
+    background-color: #fff;
+    .bottom-inner {
+      padding: 0.2rem;
+      display: flex;
+      .count-of-car {
+        border: 1px solid #ddd;
+        flex: 0 0 2rem;
+        width: 2rem;
+        height: 1rem;
+        line-height: 1rem;
+        box-sizing: border-box;
+        .icon-cart {
+          font-size: 24px;
+        }
+      }
+      .submit-box {
+        flex: 1;
+        height: 1rem;
+        line-height: 1rem;
+        color: #fff;
+        background-color: #f44336;
+      }
+    }
+  }
+  .popup {
+    width: 100%;
+    height: 70%;
+    padding: 0.2rem;
+    .popup-ct {
+      position: relative;
+      width: 100%;
+      background-color: #fff;
+      .popup-one {
+        display: flex;
+        position: relative;
+        justify-content: flex-start;
+        align-items: flex-start;
+        padding-bottom: 0.3rem;
+        border-bottom: 1px solid #ddd;
+        .img-ct {
+          height: 2rem;
+          width: 2rem;
+          margin-top: -0.5rem;
+          margin-left: 0.1rem;
+          border: 1px solid #ddd;
+          border-radius: 3px;
+          img {
+            width: 100%;
+            height: 100%;
+          }
+        }
+        .pro-guige {
+          margin-left: 10px;
+          padding: 0.1rem;
+          text-align: left;
+          .count {
+            color: #f44336;
+            font-size: 16px;
+          }
+        }
+        .close-ct {
+          position: absolute;
+          right: 0.2rem;
+          .iconfont {
+            font-size: 24px;
+          }
+        }
+      }
+      .popup-two {
+        padding: 0.1rem 0.3rem;
+        border-bottom: 1px solid #ddd;
+        text-align: left;
+        .title {
+          margin-bottom: 0.1rem;
+        }
+        .size-div {
+          width: 1rem;
+          height: 0.5rem;
+          margin-bottom: 0.1rem;
+          line-height: 0.5rem;
+          display: inline-block;
+          text-align: center;
+          color: #f44336;
+          border: 1px solid #ddd;
+          border-radius: 5px;
+        }
+      }
+      .popup-three {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        padding: 0.3rem;
+        border-bottom: 1px solid #ddd;
+      }
+    }
+    .popup-btn {
+      position: absolute;
+      width: 100%;
+      left: 0;
+      bottom: 0;
+      background-color: #f44336;
+      color: #fff;
+    }
+  }
 }
 </style>

@@ -27,7 +27,7 @@ import ConfirmBtn from '@/components/CommonBtn/ConfirmBtn'
 
 export default {
   name: 'reveiveInfo',
-  data () {
+  data() {
     return {
       name: '编辑收货地址',
       msg: 'I am reveiveInfo'

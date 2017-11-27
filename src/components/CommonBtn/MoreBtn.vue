@@ -3,17 +3,15 @@
 </template>
 
 <script>
-
 export default {
-  name: 'more-btn',
-  data () {
-    return {
-    }
+  name: "more-btn",
+  data() {
+    return {};
   },
   props: {
     msg: {
       type: String,
-      default: '查看更多宝贝'
+      default: "查看更多宝贝"
     },
     height: {
       type: Number,
@@ -21,7 +19,7 @@ export default {
     },
     color: {
       type: String,
-      default: '#f44336'
+      default: "#f44336"
     },
     fontSize: {
       type: Number,
@@ -29,25 +27,25 @@ export default {
     }
   },
   computed: {
-    btnStyle () {
-      const newHeight = this.height + 'rem'
-      const newSize = this.fontSize + 'px'
+    btnStyle() {
+      const newHeight = this.height + "rem";
+      const newSize = this.fontSize + "px";
       return {
         height: newHeight,
         lineHeight: newHeight,
         color: this.color,
         fontSize: newSize
-      }
+      };
     }
   }
-}
+};
 </script>
 
 <style  lang="less" scoped>
-.more-btn{
-    width: 100%;
-    background: #fff;
-    text-align: center;
-    border-top: 1px solid #eee;
+.more-btn {
+  width: 100%;
+  background: #fff;
+  text-align: center;
+  border-top: 1px solid #eee;
 }
 </style>

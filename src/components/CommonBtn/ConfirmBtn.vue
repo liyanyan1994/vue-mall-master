@@ -3,17 +3,15 @@
 </template>
 
 <script>
-
 export default {
-  name: 'confirm-btn',
-  data () {
-    return {
-    }
+  name: "confirm-btn",
+  data() {
+    return {};
   },
   props: {
     msg: {
       type: String,
-      default: '确认'
+      default: "确认"
     },
     height: {
       type: Number,
@@ -25,27 +23,27 @@ export default {
     },
     backColor: {
       type: String,
-      default: ''
+      default: ""
     }
   },
   computed: {
-    btnStyle () {
-      const newHeight = this.height + 'rem'
-      const newSize = this.fontSize + 'px'
+    btnStyle() {
+      const newHeight = this.height + "rem";
+      const newSize = this.fontSize + "px";
       return {
         height: newHeight,
         lineHeight: newHeight,
         fontSize: newSize,
         backgroundColor: this.backColor
-      }
+      };
     }
   }
-}
+};
 </script>
 
 <style  lang="less" scoped>
-.confirm-btn{
-    text-align: center;
-    border-radius: 4px;
+.confirm-btn {
+  text-align: center;
+  border-radius: 4px;
 }
 </style>

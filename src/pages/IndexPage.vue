@@ -34,53 +34,53 @@
 
 <script>
 export default {
-  name: 'indexPage',
-  data () {
+  name: "indexPage",
+  data() {
     return {
-      selected: 'home'
-    }
+      selected: "home"
+    };
   },
   methods: {
-    showCart (type) {
-      this.$store.dispatch('chooseMenu', type)
+    showCart(type) {
+      this.$store.dispatch("chooseMenu", type);
     }
   }
-}
+};
 </script>
 
 <style lang="scss" scoped>
-.indexPage{
-    .bottom-nav{
-        position: fixed;
-        display: flex;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        border-top: 1px solid #ddd;
-        background-color: #e6e6e6;
-        z-index: 99;
-        a{
-            flex: 1;
-            padding: .16rem 0;
-            &.router-link-active{
-                >span{
-                    color: red;
-                }
-            }
-            div{
-                display: flex;
-                flex-direction: column;
-                align-items: center;
-                justify-content: center;
-                .iconfont{
-                    font-size:28px;
-                }
-                 span{
-                    margin-top: 3px;
-                    font-size: 14px;
-                }
-            }
+.indexPage {
+  .bottom-nav {
+    position: fixed;
+    display: flex;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    border-top: 1px solid #ddd;
+    background-color: #e6e6e6;
+    z-index: 99;
+    a {
+      flex: 1;
+      padding: 0.16rem 0;
+      &.router-link-active {
+        > span {
+          color: red;
         }
+      }
+      div {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        .iconfont {
+          font-size: 28px;
+        }
+        span {
+          margin-top: 3px;
+          font-size: 14px;
+        }
+      }
     }
+  }
 }
 </style>

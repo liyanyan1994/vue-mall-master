@@ -9,24 +9,22 @@
 </template>
 
 <script type="text/ecmascript-6">
-  import {mapState} from 'vuex'
-  export default {
-    props: {
-      title: {
-        type: String
-      }
-    },
-    methods: {
-      back () {
-        this.$router.go(-1)
-      }
-    },
-    computed: {
-      ...mapState([
-        'bar'
-      ])
+import { mapState } from "vuex";
+export default {
+  props: {
+    title: {
+      type: String
     }
+  },
+  methods: {
+    back() {
+      this.$router.go(-1);
+    }
+  },
+  computed: {
+    ...mapState(["bar"])
   }
+};
 </script>
 
 <style lang="less" type="text/less">
@@ -43,21 +41,21 @@
   width: 100%;
   opacity: 1;
   z-index: 9;
-  .nav-left{
+  .nav-left {
     flex: 0 0 23px;
     width: 23px;
     margin-left: 5px;
-    .icon-back{
-        font-size: 28px;
+    .icon-back {
+      font-size: 28px;
     }
   }
   .nav-title {
-      flex: 1;
+    flex: 1;
     //   border: 1px solid red;
-      color: #544e4e;
-      font-size: 16px;
+    color: #544e4e;
+    font-size: 16px;
   }
-  .nav-right{
+  .nav-right {
     flex: 0 0 23px;
     // border: 1px solid red;
   }

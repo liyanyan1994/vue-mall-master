@@ -53,87 +53,87 @@
 </template>
 
 <script>
-import TopNav from '@/components/TopNav/TopNav'
-import func from '@/utils/func'
+import TopNav from "@/components/TopNav/TopNav";
+import func from "@/utils/func";
 
 export default {
-  name: 'center',
-  data () {
+  name: "center",
+  data() {
     return {
-      name: '我的',
-      msg: 'I am Center',
-      userName: '',
-      headImgUrl: ''
-    }
+      name: "我的",
+      msg: "I am Center",
+      userName: "",
+      headImgUrl: ""
+    };
   },
-  created () {
-    this.getUserInfo(1)
+  created() {
+    this.getUserInfo(1);
   },
   methods: {
-    getUserInfo (id) {
-      func.axiosGet('/userInfo?id=' + id, response => {
-        const returnObj = response.data[0]
-        this.userName = returnObj.name
-        this.headImgUrl = returnObj.imgUrl
-      })
+    getUserInfo(id) {
+      func.axiosGet("/userInfo?id=" + id, response => {
+        const returnObj = response.data[0];
+        this.userName = returnObj.name;
+        this.headImgUrl = returnObj.imgUrl;
+      });
     }
   },
-  components: {TopNav}
-}
+  components: { TopNav }
+};
 </script>
 
 <style lang="less" scoped>
-.center{
-    .main-ct{
-        .head-ct{
-            height: 2.6rem;
-            text-align: center;
-            border-bottom: 1px solid #ddd;
-            background-color: #fff;
-            .header-img{
-                width: 1.2rem;
-                height: 1.2rem;
-                margin-top: .6rem;
-                border: 1px solid #ddd;
-                border-radius: 50%;
-            }
-        }
-        .status-ct{
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            padding: .3rem 0;
-            background-color: #fff;
-            div{
-                flex: 1;
-                .iconfont{
-                    font-size: 24px;
-                    display: block;
-                    margin-bottom: 5px;
-                }
-            }
-        }
-        .more-ct{
-            background-color: #fff;
-            .more-list{
-                .more-item{
-                    padding: .2rem .3rem;
-                    .more-link{
-                        display: flex;
-                        justify-content: space-between;
-                        align-items: center;
-                        text-align: left;
-                        .title{
-                            width: 100%;
-                            font-size: 16px;
-                        }
-                        .iconfont{
-                            font-size: 24px;
-                        }
-                    }
-                }
-            }
-        }
+.center {
+  .main-ct {
+    .head-ct {
+      height: 2.6rem;
+      text-align: center;
+      border-bottom: 1px solid #ddd;
+      background-color: #fff;
+      .header-img {
+        width: 1.2rem;
+        height: 1.2rem;
+        margin-top: 0.6rem;
+        border: 1px solid #ddd;
+        border-radius: 50%;
+      }
     }
+    .status-ct {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 0.3rem 0;
+      background-color: #fff;
+      div {
+        flex: 1;
+        .iconfont {
+          font-size: 24px;
+          display: block;
+          margin-bottom: 5px;
+        }
+      }
+    }
+    .more-ct {
+      background-color: #fff;
+      .more-list {
+        .more-item {
+          padding: 0.2rem 0.3rem;
+          .more-link {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            text-align: left;
+            .title {
+              width: 100%;
+              font-size: 16px;
+            }
+            .iconfont {
+              font-size: 24px;
+            }
+          }
+        }
+      }
+    }
+  }
 }
 </style>

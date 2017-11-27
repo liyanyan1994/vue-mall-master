@@ -22,160 +22,163 @@
             <div class="choosed-ct">
                 <div class="title">已购商品</div>
                 <div class="choosed-list">
-                    <div class="item">
+                    <div class="item" v-for="(good,index) in orderGood" :key="index">
                         <div class="left">
-                            <img></img>
+                            <img :src="good.imgUrl"></img>
                             <div class="info">
-                                <p class="name">兰芝 兰芝兰蔻是你 说真的吗就当是真的啦</p>
-                                <div class="input-number">*1</div>
+                                <p class="name">{{good.name}}</p>
+                                <div class="input-number">*{{good.num}}</div>
                             </div>
                         </div>
-                        <div class="count">￥1293</div>
-                    </div>
-                    <div class="item">
-                        <div class="left">
-                            <img></img>
-                            <div class="info">
-                                <p class="name">兰芝 兰芝兰蔻是你 说真的吗就当是真的啦</p>
-                                <div class="input-number">*1</div>
-                            </div>
-                        </div>
-                        <div class="count">￥1293</div>
-                    </div>
-                    <div class="item">
-                        <div class="left">
-                            <img></img>
-                            <div class="info">
-                                <p class="name">兰芝 兰芝兰蔻是你 说真的吗就当是真的啦</p>
-                                <div class="input-number">*1</div>
-                            </div>
-                        </div>
-                        <div class="count">￥1293</div>
+                        <div class="count">￥{{good.price * good.num}}</div>
                     </div>
                 </div>
             </div>
-            <bottom-confirm name="确认" :number="123" @click.native="toPayMoney"></bottom-confirm>
+            <bottom-confirm name="确认" :number="totalMoney" @click.native="toPayMoney"></bottom-confirm>
         </div>
   </div>
 </template>
 
 <script>
-import TopNav from '@/components/TopNav/TopNav'
-import BottomConfirm from '@/components/BottomConfirm/BottomConfirm'
+import TopNav from "@/components/TopNav/TopNav";
+import BottomConfirm from "@/components/BottomConfirm/BottomConfirm";
 
 export default {
-  name: 'dutyFree',
-  data () {
+  name: "dutyFree",
+  data() {
     return {
-      name: '确认订单',
+      name: "确认订单",
       addReceive: true
+    };
+  },
+  computed: {
+    orderGood() {
+      var arr = [];
+      const cartGoods = this.$store.state.cartGoods;
+      for (let index in cartGoods) {
+        if (cartGoods[index].checked) {
+          arr.push(cartGoods[index]);
+        }
+      }
+      return arr;
+    },
+    totalMoney() {
+      let money = 0;
+      if (this.orderGood.length) {
+        this.orderGood.map(item => {
+          if (item.checked) {
+            money += parseFloat(item.price) * parseFloat(item.num);
+          }
+        });
+      }
+      return money;
     }
   },
-  components: {TopNav, BottomConfirm},
+  components: { TopNav, BottomConfirm },
   methods: {
-    toReceiveInfo () {
-      this.$router.push({name: 'receiveInfo'})
+    toReceiveInfo() {
+      this.$router.push({ name: "receiveInfo" });
     },
-    toPayMoney () {
-      this.$router.push({name: 'payMoney'})
+    toPayMoney() {
+      this.$router.push({ name: "payMoney" });
     }
   }
-}
+};
 </script>
 
 <style  lang="less" scoped>
-.dutyFree{
-    .main-ct{
-        .add-qu-info{
-            background-color: #fff;
-            height: 1rem;
-            line-height: 1rem;
-            .add-ct{
-                .iconfont{
-                    font-size: 24px;
-                    // border:1px solid red;
-                    display: inline-block;
-                }
-               .add-span{
-                    color:#f44336;
-                    font-size: 16px;
-                    // border:1px solid red;
-                } 
-            }
-            .receive-info{
-                padding: .3rem;
-                text-align: left;
-                div{
-                    padding: .1rem 0;
-                    .one{
-                        display: inline-block;
-                        width: 1rem;
-                        height: .3rem;
-                        line-height: .3rem;
-                        text-align: center;
-                        color: #8a8a8a;
-                        border:1px solid #8a8a8a;
-                        border-radius: 2px;
-                        font-size: 12px;
-                    }
-                    .two{
-                        font-size: 16px;
-                        color: #333;
-                        margin-left: 10px;
-                    }
-                    .three{
-                        font-size: 16px;
-                        margin-left: 10px;
-                    }
-                }
-            }
+.dutyFree {
+  .main-ct {
+    .add-qu-info {
+      background-color: #fff;
+      height: 1rem;
+      line-height: 1rem;
+      .add-ct {
+        .iconfont {
+          font-size: 24px;
+          // border:1px solid red;
+          display: inline-block;
         }
-        .choosed-ct{
-            background-color: #fff;
-            text-align: left;
-            .title{
-                height: .6rem;
-                line-height: .6rem;
-                background-color: #e6e6e6;
-                text-indent: .3rem;
-                font-size: 16px;
-            }
-            .choosed-list{
-                .item{
-                    display: flex;
-                    padding: .2rem .3rem;
-                    justify-content: flex-start;
-                    align-items: flex-start;
-                    border-bottom: 1px solid #ddd;
-                    .left{
-                        img{
-                            height: 1.6rem;
-                            width: 1.4rem;
-                            float: left;
-                        }
-                        .info{
-                            display: inline-block;
-                            width: 3rem;
-                            margin-left: .3rem;
-                            text-align: left;
-                            .name{
-                                color: #333;
-                            }
-                            .input-number{
-                                margin-top: .2rem;
-                                color: #bbb;
-                            }
-                        }
-                    }
-                    .count{
-                        flex: 1;
-                        font-size: 16px;
-                        text-align: right;
-                        color: #333;
-                    }
-                }
-            }
+        .add-span {
+          color: #f44336;
+          font-size: 16px;
+          // border:1px solid red;
         }
+      }
+      .receive-info {
+        padding: 0.3rem;
+        text-align: left;
+        div {
+          padding: 0.1rem 0;
+          .one {
+            display: inline-block;
+            width: 1rem;
+            height: 0.3rem;
+            line-height: 0.3rem;
+            text-align: center;
+            color: #8a8a8a;
+            border: 1px solid #8a8a8a;
+            border-radius: 2px;
+            font-size: 12px;
+          }
+          .two {
+            font-size: 16px;
+            color: #333;
+            margin-left: 10px;
+          }
+          .three {
+            font-size: 16px;
+            margin-left: 10px;
+          }
+        }
+      }
     }
+    .choosed-ct {
+      background-color: #fff;
+      text-align: left;
+      .title {
+        height: 0.6rem;
+        line-height: 0.6rem;
+        background-color: #e6e6e6;
+        text-indent: 0.3rem;
+        font-size: 16px;
+      }
+      .choosed-list {
+        .item {
+          display: flex;
+          padding: 0.2rem 0.3rem;
+          justify-content: flex-start;
+          align-items: flex-start;
+          border-bottom: 1px solid #ddd;
+          .left {
+            img {
+              height: 1.6rem;
+              width: 1.4rem;
+              float: left;
+            }
+            .info {
+              display: inline-block;
+              width: 3rem;
+              margin-left: 0.3rem;
+              text-align: left;
+              .name {
+                color: #333;
+              }
+              .input-number {
+                margin-top: 0.2rem;
+                color: #bbb;
+              }
+            }
+          }
+          .count {
+            flex: 1;
+            font-size: 16px;
+            text-align: right;
+            color: #333;
+          }
+        }
+      }
+    }
+  }
 }
 </style>
