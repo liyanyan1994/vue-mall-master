@@ -16,12 +16,24 @@ export default {
   [types.RECEIVE_GOOD_DETAIL](state, product) {
     state.goodDetail = product
   },
-  [types.ADD_TO_CART](state, id) {
-    const record = state.added.find(p => p.id === id)
+  [types.GOOD_NUM_ADD](state, id) {
+    state.goodDetail.num += 1
+  },
+  [types.GOOD_NUM_REDUCE](state, id) {
+    const good = state.goodDetail
+    if (good.num <= 1) {
+      good.num = 1
+    } else {
+      good.num -= 1
+    }
+  },
+  [types.ADD_TO_CART](state, good) {
+    state.allChecked = null
+    const record = state.added.find(p => p.id === good.id)
     if (!record) {
       state.added.push({
-        id: id,
-        num: 1
+        id: good.id,
+        num: good.num
       })
     } else {
       record.num++
@@ -72,5 +84,8 @@ export default {
       state.cartGoods[good].checked = flag;
     }
     state.allChecked = !state.allChecked;
+  },
+  [types.DELETE_ONE_GOOD](state, index) {
+    state.added.splice(index, 1)
   }
 }

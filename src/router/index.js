@@ -43,5 +43,13 @@ export default new Router({
     path: '/payMoney',
     name: 'payMoney',
     component: resolve => require(['@/pages/Cart/PayMoney'], resolve)
+  }, {
+    path: '/beingReceive',
+    name: 'beingReceive',
+    component: resolve => require(['@/pages/Cart/beingReceive'], resolve)
+  }, {
+    path: '/allOrder',
+    name: 'allOrder',
+    component: resolve => require(['@/pages/Cart/allOrder'], resolve)
   }]
 })

@@ -47,7 +47,7 @@
                 </div>
                 <div class="popup-three">
                     <div>购买数量</div>
-                    <add-reduce-btn :goodNum="productInfo.num" @cartGoodAdd="goodAdd" @cartGoodReduce="goodReduce"></add-reduce-btn>
+                    <add-reduce-btn :goodNum="productInfo.num" @numAdd="goodNumAdd" @numReduce="goodNumReduce"></add-reduce-btn>
                 </div>
             </div>
             <confirm-btn class="popup-btn" @click.native="toCart(productInfo)"></confirm-btn>
@@ -92,12 +92,12 @@ export default {
     showBottom() {
       this.popupVisible = true;
     },
-    goodAdd() {
-      this.$store.dispatch("cartGoodAdd", this.productInfo.id);
+    goodNumAdd() {
+      this.$store.dispatch("goodNumAdd", this.productInfo.id);
     },
-    goodReduce() {
+    goodNumReduce() {
       console.log(this.productInfo.id);
-      this.$store.dispatch("cartGoodReduce", this.productInfo.id);
+      this.$store.dispatch("goodNumReduce", this.productInfo.id);
     },
     toCart(p) {
       this.$store.dispatch("addToCart", p);

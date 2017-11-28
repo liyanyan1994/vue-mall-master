@@ -8,16 +8,22 @@
             </div>
             <div class="status-ct">
                 <div class="will-pay">
-                    <i class="icon iconfont icon-daifukuan1"></i>
-                    <span>待付款</span>
+                    <router-link to="/payMoney">
+                        <i class="icon iconfont icon-daifukuan1"></i>
+                        <span>待付款</span>
+                    </router-link>
                 </div>
                 <div class="will-shouhuo">
-                    <i class="icon iconfont icon-daishouhuo"></i>
-                    <span>待收货</span>
+                    <router-link to="/beingReceive">
+                        <i class="icon iconfont icon-daishouhuo"></i>
+                        <span>待收货</span>
+                    </router-link>
                 </div>
                 <div class="will-all">
-                    <i class="icon iconfont icon-quanbudingdan"></i>
-                    <span>全部订单</span>
+                    <router-link to="/allOrder">
+                        <i class="icon iconfont icon-quanbudingdan"></i>
+                        <span>全部订单</span>
+                    </router-link>
                 </div>
             </div>
             <div class="more-ct">

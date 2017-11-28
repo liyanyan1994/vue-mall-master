@@ -43,6 +43,7 @@ export default {
   },
   methods: {
     toProductDetail(obj) {
+      this.$store.dispatch("chooseGoodId", obj.id);
       this.$router.push({ name: "productDetail", params: { detailObj: obj } });
     }
   },

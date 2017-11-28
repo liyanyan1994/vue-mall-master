@@ -24,7 +24,6 @@ export const cartGoods = state => {
       checked: isChecked
     }
   })
-  console.log('getter')
-  state.cartGoods = Object.assign({}, cartGoodList)
+  state.cartGoods = Object.assign([], cartGoodList)
   return cartGoodList
 }

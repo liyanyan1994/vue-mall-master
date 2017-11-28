@@ -22,10 +22,10 @@ export default {
   },
   methods: {
     reduceGood() {
-      this.$emit("cartGoodReduce");
+      this.$emit("numReduce");
     },
     addGood() {
-      this.$emit("cartGoodAdd");
+      this.$emit("numAdd");
     }
   }
 };

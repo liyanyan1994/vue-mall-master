@@ -73,11 +73,11 @@ export default {
         align-items: center;
         justify-content: center;
         .iconfont {
-          font-size: 28px;
+          font-size: 22px;
         }
         span {
           margin-top: 3px;
-          font-size: 14px;
+          font-size: 11px;
         }
       }
     }

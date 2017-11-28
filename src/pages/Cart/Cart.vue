@@ -99,7 +99,7 @@ export default {
     deleteGood(index) {
       MessageBox.confirm("确定删除此商品")
         .then(action => {
-          this.cartGoods.splice(index, 1);
+          this.$store.dispatch("deleteOneGood", index);
         })
         .then();
     }
@@ -111,10 +111,10 @@ export default {
 .cart {
   .main-ct {
     margin-bottom: 1.6rem;
-    &.no-data{
-        color: red;
-        padding-top: 20px;
-        font-size: 16px;
+    &.no-data {
+      color: red;
+      padding-top: 20px;
+      font-size: 16px;
     }
     .list-ct {
       .item {

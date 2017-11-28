@@ -1,6 +1,7 @@
 import * as types from './mutation-types'
 import func from '@/utils/func'
 import localEvent from './local'
+import qs from 'qs'
 
 export default {
   chooseMenu({
@@ -37,11 +38,21 @@ export default {
       commit(types.RECEIVE_GOOD_DETAIL, goodData)
     })
   },
+  goodNumAdd({
+    commit
+  }, id) {
+    commit('GOOD_NUM_ADD', id)
+  },
+  goodNumReduce({
+    commit
+  }, id) {
+    commit('GOOD_NUM_REDUCE', id)
+  },
   addToCart({
     commit
   }, good) {
-    console.log(good.id)
-    commit('ADD_TO_CART', good.id)
+    commit('ADD_TO_CART', good)
+    commit('IS_CHOOSE_ALL')
   },
   cartGoodAdd({
     commit
@@ -60,9 +71,24 @@ export default {
     commit('CHOOSE_ONE_GOOD', index)
     commit('IS_CHOOSE_ALL')
   },
+  // 选中所有商品
   chooseAllGoods({
     commit
   }) {
     commit('CHOOSE_ALL_GOODS')
+  },
+  // 删除某个商品
+  deleteOneGood({
+    commit
+  }, index) {
+    commit('DELETE_ONE_GOOD', index)
+    commit('IS_CHOOSE_ALL')
+  },
+  receiveInfo({
+    commit
+  }, obj) {
+    func.axiosPost('/receiveInfo', qs.stringify(obj), response => {
+      console.log(response.data[0])
+    })
   }
 }

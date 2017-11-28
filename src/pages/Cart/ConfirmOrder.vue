@@ -3,19 +3,19 @@
         <top-nav :title="name"></top-nav>
         <div class="main-ct">
             <div class="add-qu-info">
-                <div v-if="addReceive" class="add-ct"> 
+                <div v-if="!receiver" class="add-ct"> 
                     <i class="icon iconfont icon-add"></i>
                     <span class="add-span" @click="toReceiveInfo" >添加收货地址</span>
                 </div>
                 <div v-else class="receive-info">
                     <div>
                         <div class="one">收货人</div>
-                        <span class="two">陈冰</span>
-                        <span class="three">13824596154</span>
+                        <span class="two">{{receiver.customerName}}</span>
+                        <span class="three">{{receiver.customerPhone}}</span>
                     </div>
                     <div>
                         <div class="one">收货地址</div>
-                        <span class="two">仁川机场T航站楼</span>
+                        <span class="two">{{receiver.detailAdress}}</span>
                     </div>
                 </div>
             </div>
@@ -42,16 +42,18 @@
 <script>
 import TopNav from "@/components/TopNav/TopNav";
 import BottomConfirm from "@/components/BottomConfirm/BottomConfirm";
-
+import localEvent from "@/store/local";
 export default {
   name: "dutyFree",
   data() {
     return {
-      name: "确认订单",
-      addReceive: true
+      name: "确认订单"
     };
   },
   computed: {
+    receiver() {
+      return localEvent.StorageGetter("AdressInfo");
+    },
     orderGood() {
       var arr = [];
       const cartGoods = this.$store.state.cartGoods;
@@ -91,18 +93,14 @@ export default {
   .main-ct {
     .add-qu-info {
       background-color: #fff;
-      height: 1rem;
-      line-height: 1rem;
       .add-ct {
         .iconfont {
           font-size: 24px;
-          // border:1px solid red;
           display: inline-block;
         }
         .add-span {
           color: #f44336;
           font-size: 16px;
-          // border:1px solid red;
         }
       }
       .receive-info {
@@ -122,12 +120,12 @@ export default {
             font-size: 12px;
           }
           .two {
-            font-size: 16px;
+            font-size: 14px;
             color: #333;
             margin-left: 10px;
           }
           .three {
-            font-size: 16px;
+            font-size: 14px;
             margin-left: 10px;
           }
         }
