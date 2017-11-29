@@ -47,7 +47,7 @@
                         </router-link>
                     </li>
                     <li class="more-item">
-                        <router-link class="more-link" to="">
+                        <router-link class="more-link" to="/receiveAdress">
                             <p class="title">收货地址</p>
                             <i class="icon iconfont icon-more"></i>
                         </router-link>

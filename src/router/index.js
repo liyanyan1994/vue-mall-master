@@ -51,5 +51,9 @@ export default new Router({
     path: '/allOrder',
     name: 'allOrder',
     component: resolve => require(['@/pages/Cart/allOrder'], resolve)
+  }, {
+    path: '/receiveAdress',
+    name: 'receiveAdress',
+    component: resolve => require(['@/pages/Center/receiveAdress'], resolve)
   }]
 })

@@ -28,7 +28,6 @@ import TopNav from "@/components/TopNav/TopNav";
 import ConfirmBtn from "@/components/CommonBtn/ConfirmBtn";
 import { Toast } from "mint-ui";
 import func from "@/utils/func";
-import localEvent from '@/store/local'
 export default {
   name: "reveiveInfo",
   data() {
@@ -60,7 +59,7 @@ export default {
     sumbitReceiveInfo() {
       func.axiosPost("/receiveInfo", this.cusInfo, response => {
         Toast(response.data.msg);
-        localEvent.StorageSetter('AdressInfo', this.cusInfo)
+        // localEvent.StorageSetter('AdressInfo', this.cusInfo)
         this.$router.go(-1);
       });
     }
@@ -97,7 +96,7 @@ export default {
       .confirm {
         margin: 0.3rem auto;
         color: #bfbfbf;
-        border: 1px solid #bfbfbf;
+        border: 1px solid #e6e6e6;
         width: 80%;
       }
     }

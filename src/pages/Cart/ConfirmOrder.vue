@@ -5,18 +5,25 @@
             <div class="add-qu-info">
                 <div v-if="!receiver" class="add-ct"> 
                     <i class="icon iconfont icon-add"></i>
-                    <span class="add-span" @click="toReceiveInfo" >添加收货地址</span>
+                    <span class="add-span" @click="toReceiveInfo" >选择收货地址</span>
                 </div>
                 <div v-else class="receive-info">
-                    <div>
-                        <div class="one">收货人</div>
-                        <span class="two">{{receiver.customerName}}</span>
-                        <span class="three">{{receiver.customerPhone}}</span>
-                    </div>
-                    <div>
-                        <div class="one">收货地址</div>
-                        <span class="two">{{receiver.detailAdress}}</span>
-                    </div>
+                    <router-link to="/receiveAdress" class="address-route">
+                        <div class="info-left">
+                            <div>
+                                <div class="one">收货人</div>
+                                <span class="two">{{receiver.customerName}}</span>
+                                <span class="three">{{receiver.customerPhone}}</span>
+                            </div>
+                            <div>
+                                <div class="one">收货地址</div>
+                                <span class="two">{{receiver.detailAdress}}</span>
+                            </div>
+                        </div>
+                        <div class="info-right">
+                            <i class="icon iconfont icon-more"></i>
+                        </div>
+                    </router-link>
                 </div>
             </div>
             <div class="choosed-ct">
@@ -106,27 +113,39 @@ export default {
       .receive-info {
         padding: 0.3rem;
         text-align: left;
-        div {
-          padding: 0.1rem 0;
-          .one {
-            display: inline-block;
-            width: 1rem;
-            height: 0.3rem;
-            line-height: 0.3rem;
-            text-align: center;
-            color: #8a8a8a;
-            border: 1px solid #8a8a8a;
-            border-radius: 2px;
-            font-size: 12px;
+        .address-route {
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          .info-left {
+            div {
+              padding: 0.1rem 0;
+              .one {
+                display: inline-block;
+                width: 1rem;
+                height: 0.3rem;
+                line-height: 0.3rem;
+                text-align: center;
+                color: #8a8a8a;
+                border: 1px solid #8a8a8a;
+                border-radius: 2px;
+                font-size: 12px;
+              }
+              .two {
+                font-size: 14px;
+                color: #333;
+                margin-left: 10px;
+              }
+              .three {
+                font-size: 14px;
+                margin-left: 10px;
+              }
+            }
           }
-          .two {
-            font-size: 14px;
-            color: #333;
-            margin-left: 10px;
-          }
-          .three {
-            font-size: 14px;
-            margin-left: 10px;
+          .info-right {
+            .icon-more {
+              font-size: 28px;
+            }
           }
         }
       }

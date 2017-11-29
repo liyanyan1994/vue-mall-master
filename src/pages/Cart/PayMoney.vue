@@ -1,7 +1,7 @@
 <template>
   <div class="payMoney">
         <top-nav :title="name" class="top-nav"></top-nav>
-        <div class="main-ct">
+        <div class="main-ct" v-if="payMentGoods.length">
             <div class="one-pay-ct">
                 <div class="title">
                     <div class="time">2016-09-10</div>
@@ -30,13 +30,16 @@
                 </div>
             </div>
         </div>
+        <div v-else>
+            <data-null class="main-ct" dataIcon="icon-kongshuju" dataText="暂无待付款订单"></data-null>
+        </div>
   </div>
 </template>
 
 <script>
 import TopNav from "@/components/TopNav/TopNav";
 import ConfirmBtn from "@/components/CommonBtn/ConfirmBtn";
-
+import DataNull from "@/pages/DataNull";
 export default {
   name: "payMoney",
   data() {
@@ -79,7 +82,7 @@ export default {
       return total;
     }
   },
-  components: { TopNav, ConfirmBtn }
+  components: { TopNav, ConfirmBtn, DataNull }
 };
 </script>
 

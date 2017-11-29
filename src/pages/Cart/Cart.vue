@@ -40,12 +40,15 @@
                 <div class="right" @click="toConfirmOrder">结算({{totalNum}})</div>
             </div>
         </div>
-        <div class="main-ct no-data" v-else>NO Data</div>
+        <div class="main-ct" v-else>
+            <data-null dataText="购物车是空的"></data-null>
+        </div>
   </div>
 </template>
 
 <script>
 import TopNav from "@/components/TopNav/TopNav";
+import DataNull from "@/pages/DataNull";
 import { MessageBox } from "mint-ui";
 import { mapGetters, mapActions } from "vuex";
 
@@ -56,7 +59,7 @@ export default {
       msg: "I am Cart"
     };
   },
-  components: { TopNav },
+  components: { TopNav, DataNull },
   created() {},
   computed: {
     ...mapGetters(["cartGoods", "allChecked"]),
@@ -111,11 +114,11 @@ export default {
 .cart {
   .main-ct {
     margin-bottom: 1.6rem;
-    &.no-data {
-      color: red;
-      padding-top: 20px;
-      font-size: 16px;
-    }
+    // &.no-data {
+    //   color: red;
+    //   padding-top: 20px;
+    //   font-size: 16px;
+    // }
     .list-ct {
       .item {
         position: relative;
