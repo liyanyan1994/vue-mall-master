@@ -20,7 +20,7 @@ export default {
 </script>
 <style  lang="less" scoped>
 .data-null {
-  padding: 40px 10px;
+  padding: 2rem .2rem;
   height: 2rem;
   text-align: center;
   .icon {

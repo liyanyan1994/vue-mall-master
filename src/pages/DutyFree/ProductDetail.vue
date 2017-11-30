@@ -62,6 +62,7 @@ import SecondTitle from "@/components/SecondTitle/SecondTitle";
 import AddReduceBtn from "@/components/StyleCommon/AddReduceBtn";
 import { Popup } from "mint-ui";
 import { mapGetters } from "vuex";
+import localEvent from "@/store/local";
 export default {
   name: "dutyFree",
   data() {
@@ -77,6 +78,10 @@ export default {
     if (this.$route.params.detailObj.id) {
       this.$store.dispatch("getGoodDetail", this.$route.params.detailObj.id);
     }
+  },
+  destroyed() {
+    console.log("destoryed");
+    localEvent.LocalStoreSetting(this.productInfo);
   },
   computed: {
     ...mapGetters({

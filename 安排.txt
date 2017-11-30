@@ -56,3 +56,11 @@
     12.手动设置收货地址，储存到本地，然后跳转套确认订单页面
 
     13.数据为空的组件
+
+    2017/11/30
+    14.浏览历史,本地储存
+    
+        localStore = JSON.parse(localStorage.getItem("localStore")) || {};
+        localStorage.setItem("localStore", JSON.stringify(localStore));
+
+    和我的收藏

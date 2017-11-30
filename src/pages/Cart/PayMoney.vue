@@ -88,9 +88,6 @@ export default {
 
 <style  lang="less" scoped>
 .payMoney {
-  .top-nav {
-    background-color: #fff;
-  }
   .main-ct {
     .one-pay-ct {
       .title {
