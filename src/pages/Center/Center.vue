@@ -35,7 +35,7 @@
                         </router-link>
                     </li>
                     <li class="more-item">
-                        <router-link class="more-link" to="">
+                        <router-link class="more-link" to="/historyScann">
                             <p class="title">浏览历史</p>
                             <i class="icon iconfont icon-more"></i>
                         </router-link>

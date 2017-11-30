@@ -55,5 +55,9 @@ export default new Router({
     path: '/receiveAdress',
     name: 'receiveAdress',
     component: resolve => require(['@/pages/Center/receiveAdress'], resolve)
+  }, {
+    path: '/historyScann',
+    name: 'historyScann',
+    component: resolve => require(['@/pages/Center/historyScann'], resolve)
   }]
 })

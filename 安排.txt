@@ -59,8 +59,9 @@
 
     2017/11/30
     14.浏览历史,本地储存
-    
         localStore = JSON.parse(localStorage.getItem("localStore")) || {};
         localStorage.setItem("localStore", JSON.stringify(localStore));
+      
+      添加历史浏览的页面，获取本地存储（未测试）
 
-    和我的收藏
+    和我的收藏   
