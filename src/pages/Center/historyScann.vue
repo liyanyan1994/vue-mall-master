@@ -34,7 +34,7 @@ export default {
     };
   },
   computed: {
-    historyList(){
+    historyList() {
       return localEvent.StorageGetter("localStore")
     }
   },
@@ -57,7 +57,7 @@ export default {
       background-color: #fff;
       .history-item {
         position: relative;
-        display: inline-block;
+        float: left;
         vertical-align: top;
         margin-left: 1%;
         width: 48%;

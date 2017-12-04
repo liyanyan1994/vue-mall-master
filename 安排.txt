@@ -62,6 +62,6 @@
         localStore = JSON.parse(localStorage.getItem("localStore")) || {};
         localStorage.setItem("localStore", JSON.stringify(localStore));
       
-      添加历史浏览的页面，获取本地存储（未测试）
-
+      添加历史浏览的页面，获取本地存储
+    2017/12/01
     和我的收藏   

@@ -28,12 +28,12 @@
             </div>
             <div class="more-ct">
                 <ul class="more-list">
-                    <li class="more-item">
+                    <!-- <li class="more-item">
                         <router-link class="more-link" to="">
                             <p class="title">我的收藏</p>
                             <i class="icon iconfont icon-more"></i>
                         </router-link>
-                    </li>
+                    </li> -->
                     <li class="more-item">
                         <router-link class="more-link" to="/historyScann">
                             <p class="title">浏览历史</p>
@@ -120,6 +120,7 @@ export default {
       }
     }
     .more-ct {
+      margin-top:.3rem;
       background-color: #fff;
       .more-list {
         .more-item {

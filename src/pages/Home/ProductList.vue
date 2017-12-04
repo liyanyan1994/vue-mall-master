@@ -6,14 +6,14 @@
             <div class="product-item" @click="toProductDetail(pro)" v-for="(pro,index) in productList" :key="index">
                 <a class="item-link">
                     <div class="item-inner">
-                        <img :src="pro.imgUrl">
+                        <img :src="pro.img_url">
                     </div>
                 </a>
                 <p class="name">{{pro.name}}</p>
                 <div class="price-wrapper">
-                    <span class="grally-price">￥{{pro.price}}</span>
-                    <span class="mark-price">￥{{pro.price}}</span>
-                    <span class="discount">6.4折</span>
+                    <span class="grally-price">{{pro.price}}</span>
+                    <span class="mark-price">{{pro.price}}</span>
+                    <span class="discount">{{pro.discount}}</span>
                 </div>
             </div>
         </div>
@@ -60,7 +60,7 @@ export default {
       background-color: #fff;
       .product-item {
         position: relative;
-        display: inline-block;
+        float: left;
         vertical-align: top;
         margin-left: 1%;
         width: 48%;

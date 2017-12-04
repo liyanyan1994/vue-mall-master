@@ -33,9 +33,9 @@
                     <div class="circle" @click="chooseAllGoods">
                          <i class="icon iconfont" :class="allChecked ? 'icon-juxing': 'icon-weixuanzhong'"></i>
                     </div>
-                    <span>合计：</span>
+                    <span class="he-ji">合计：</span>
                     <span class="counts">￥{{totalMoney}}</span>
-                    <span class="no-yun">(不含运费)</span>
+                    <!-- <span class="no-yun">(不含运费)</span> -->
                 </div>
                 <div class="right" @click="toConfirmOrder">结算({{totalNum}})</div>
             </div>
@@ -114,11 +114,6 @@ export default {
 .cart {
   .main-ct {
     margin-bottom: 1.6rem;
-    // &.no-data {
-    //   color: red;
-    //   padding-top: 20px;
-    //   font-size: 16px;
-    // }
     .list-ct {
       .item {
         position: relative;
@@ -139,7 +134,7 @@ export default {
             margin-top: -10px;
             margin-left: -10px;
             .iconfont {
-              font-size: 24px;
+              font-size: .5rem;
             }
           }
         }
@@ -216,7 +211,7 @@ export default {
       position: fixed;
       display: flex;
       justify-content: flex-start;
-      bottom: 1.2rem;
+      bottom: 60px;
       left: 0;
       right: 0;
       border-top: 1px solid #ddd;
@@ -224,15 +219,18 @@ export default {
       .left {
         flex: 1;
         position: relative;
-        height: 1rem;
-        line-height: 1rem;
+        height: 50px;
+        line-height: 50px;
         background-color: #fff;
         .circle {
           position: absolute;
           margin-left: 10px;
           .iconfont {
-            font-size: 24px;
+            font-size: .5rem;
           }
+        }
+        .he-ji{
+            margin-left: 20px;
         }
         .counts {
           color: #f44336;
@@ -245,8 +243,8 @@ export default {
       .right {
         flex: 0 0 120px;
         width: 120px;
-        height: 1rem;
-        line-height: 1rem;
+        height: 50px;
+        line-height: 50px;
         background-color: #f44336;
         color: #fff;
       }

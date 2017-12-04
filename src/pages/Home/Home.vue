@@ -14,9 +14,9 @@
           </div>
           <div class="topic-ct">
               <second-title msg="今日特卖" class="topic-title"></second-title>
-              <router-link :to="{ path: '/productList/' + item.id}" v-for="(item,index) in hotTopic" :key="index" @click.native="productId(item.id)">
+              <router-link :to="{ path: '/productList/' + item.type}" v-for="(item,index) in hotTopic" :key="index" @click.native="productId(item.type)">
                 <div class="topic-item">
-                    <img class="topic-img" :src="item.imgUrl"/>
+                    <img class="topic-img" :src="item.img_url"/>
                     <p class="name">{{item.msg}}</p>
                     <p class="time">{{item.pms}}</p>
                 </div>
@@ -113,7 +113,7 @@ export default {
         }
         .name {
           margin-top: 0.3rem;
-          font-size: 20px;
+          font-size: .4rem;
         }
         .time {
           margin-top: 0.2rem;
