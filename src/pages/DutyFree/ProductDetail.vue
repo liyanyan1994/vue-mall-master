@@ -4,7 +4,7 @@
         <div class="main-ct">
             <div class="top-ct">
                 <div class="swpier-ct">
-                    <img :src="productInfo.headImg">
+                    <img :src="productInfo.head_img">
                 </div>
                 <div class="title-ct">
                     <p class="name">{{productInfo.name}}</p>
@@ -30,7 +30,7 @@
             <div class="popup-ct">
                 <div class="popup-one">
                     <div class="img-ct">
-                        <img :src="productInfo.imgUrl">
+                        <img :src="productInfo.head_img">
                     </div>
                     <div class="pro-guige">
                         <p class="count">￥{{productInfo.price}}</p>
@@ -75,8 +75,8 @@ export default {
   },
   components: { TopNav, SecondTitle, Popup, AddReduceBtn, ConfirmBtn },
   created() {
-    if (this.$route.params.detailObj.id) {
-      this.$store.dispatch("getGoodDetail", this.$route.params.detailObj.id);
+    if (this.$route.params.detailObj.goodId) {
+      this.$store.dispatch("getGoodDetail", this.$route.params.detailObj.goodId);
     }
   },
   destroyed() {
@@ -88,8 +88,8 @@ export default {
       productInfo: "goodDetail"
     }),
     detailImgUrl() {
-      if (this.productInfo.detailImg) {
-        return this.productInfo.detailImg.split(",");
+      if (this.productInfo.detail_img) {
+        return this.productInfo.detail_img.split(",");
       }
     }
   },

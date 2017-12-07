@@ -11,8 +11,8 @@
                 </a>
                 <p class="name">{{pro.name}}</p>
                 <div class="price-wrapper">
-                    <span class="grally-price">{{pro.price}}</span>
-                    <span class="mark-price">{{pro.price}}</span>
+                    <span class="grally-price">￥{{pro.price}}</span>
+                    <span class="mark-price">￥{{pro.price}}</span>
                     <span class="discount">{{pro.discount}}</span>
                 </div>
             </div>

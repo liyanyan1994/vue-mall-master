@@ -6,7 +6,7 @@
             <div class="history-item" @click="toProductDetail(his)" v-for="(his,index) in historyList" :key="index">
                 <a class="item-link">
                     <div class="item-inner">
-                        <img :src="his.imgUrl">
+                        <img :src="his.img_url">
                     </div>
                 </a>
                 <p class="name">{{his.name}}</p>
@@ -40,7 +40,7 @@ export default {
   },
   methods: {
     toProductDetail(obj) {
-      this.$store.dispatch("chooseGoodId", obj.id);
+      this.$store.dispatch("chooseGoodId", obj.goodId);
       this.$router.push({ name: "productDetail", params: { detailObj: obj } });
     }
   },

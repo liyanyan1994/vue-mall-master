@@ -16,7 +16,7 @@ export const cartGoods = state => {
       }
     }
     return {
-      imgUrl: good.imgUrl,
+      imgUrl: good.head_img,
       name: good.name,
       price: good.price,
       num: add.num,
