@@ -1,101 +1,101 @@
 <template>
-  <div class="dutyFree">
-        <top-nav :title="name"></top-nav>
-        <div class="main-ct">
-            <div class="add-qu-info">
-                <div v-if="!receiver" class="add-ct"> 
-                    <i class="icon iconfont icon-add"></i>
-                    <span class="add-span" @click="toReceiveInfo" >选择收货地址</span>
+  <div class='dutyFree'>
+        <top-nav :title='name'></top-nav>
+        <div class='main-ct'>
+            <div class='add-qu-info'>
+                <div v-if='!receiver' class='add-ct'> 
+                    <i class='icon iconfont icon-add'></i>
+                    <span class='add-span' @click='toReceiveInfo' >选择收货地址</span>
                 </div>
-                <div v-else class="receive-info">
-                    <router-link to="/receiveAdress" class="address-route">
-                        <div class="info-left">
+                <div v-else class='receive-info'>
+                    <router-link to='/receiveAdress' class='address-route'>
+                        <div class='info-left'>
                             <div>
-                                <div class="one">收货人</div>
-                                <span class="two">{{receiver.customerName}}</span>
-                                <span class="three">{{receiver.customerPhone}}</span>
+                                <div class='one'>收货人</div>
+                                <span class='two'>{{receiver.customerName}}</span>
+                                <span class='three'>{{receiver.customerPhone}}</span>
                             </div>
                             <div>
-                                <div class="one">收货地址</div>
-                                <span class="two">{{receiver.detailAdress}}</span>
+                                <div class='one'>收货地址</div>
+                                <span class='two'>{{receiver.detailAdress}}</span>
                             </div>
                         </div>
-                        <div class="info-right">
-                            <i class="icon iconfont icon-more"></i>
+                        <div class='info-right'>
+                            <i class='icon iconfont icon-more'></i>
                         </div>
                     </router-link>
                 </div>
             </div>
-            <div class="choosed-ct">
-                <div class="title">已购商品</div>
-                <div class="choosed-list">
-                    <div class="item" v-for="(good,index) in orderGood" :key="index">
-                        <div class="left">
-                            <img :src="good.imgUrl"></img>
-                            <div class="info">
-                                <p class="name">{{good.name}}</p>
-                                <div class="input-number">*{{good.num}}</div>
+            <div class='choosed-ct'>
+                <div class='title'>已购商品</div>
+                <div class='choosed-list'>
+                    <div class='item' v-for='(good,index) in orderGood' :key='index'>
+                        <div class='left'>
+                            <img :src='good.imgUrl'></img>
+                            <div class='info'>
+                                <p class='name'>{{good.name}}</p>
+                                <div class='input-number'>*{{good.num}}</div>
                             </div>
                         </div>
-                        <div class="count">￥{{good.price * good.num}}</div>
+                        <div class='count'>￥{{good.price * good.num}}</div>
                     </div>
                 </div>
             </div>
-            <bottom-confirm name="确认" :number="totalMoney" @click.native="toPayMoney"></bottom-confirm>
+            <bottom-confirm name='确认' :number='totalMoney' @click.native='toPayMoney'></bottom-confirm>
         </div>
   </div>
 </template>
 
 <script>
-import TopNav from "@/components/TopNav/TopNav";
-import BottomConfirm from "@/components/BottomConfirm/BottomConfirm";
-import localEvent from "@/store/local";
+import TopNav from '@/components/TopNav/TopNav'
+import BottomConfirm from '@/components/BottomConfirm/BottomConfirm'
+import localEvent from '@/store/local'
 export default {
-  name: "dutyFree",
+  name: 'dutyFree',
   data() {
     return {
-      name: "确认订单"
-    };
+      name: '确认订单'
+    }
   },
   computed: {
     receiver() {
-      return localEvent.StorageGetter("AdressInfo");
+      return localEvent.StorageGetter('AdressInfo')
     },
     orderGood() {
-      var arr = [];
-      const cartGoods = this.$store.state.cartGoods;
-      for (let index in cartGoods) {
+      var arr = []
+      const cartGoods = this.$store.state.cartGoods
+      for (const index in cartGoods) {
         if (cartGoods[index].checked) {
-          arr.push(cartGoods[index]);
+          arr.push(cartGoods[index])
         }
       }
-      return arr;
+      return arr
     },
     totalMoney() {
-      let money = 0;
+      let money = 0
       if (this.orderGood.length) {
         this.orderGood.map(item => {
           if (item.checked) {
-            money += parseFloat(item.price) * parseFloat(item.num);
+            money += parseFloat(item.price) * parseFloat(item.num)
           }
-        });
+        })
       }
-      return money;
+      return money
     }
   },
   components: { TopNav, BottomConfirm },
   methods: {
     toReceiveInfo() {
-      this.$router.push({ name: "receiveInfo" });
+      this.$router.push({ name: 'receiveInfo' })
     },
     toPayMoney() {
-      this.$router.push({ name: "payMoney" });
+      this.$router.push({ name: 'payMoney' })
     }
   }
-};
+}
 </script>
 
-<style  lang="less" scoped>
+<style  lang='less' scoped>
 .dutyFree {
   .main-ct {
     .add-qu-info {

@@ -1,27 +1,27 @@
 <template>
-    <div class="receiveAdress">
-         <top-nav :title="name"></top-nav>
-        <div class="main-ct">
-            <div class="adress-ct">
-                <div class="item" v-for="(address,index) in addressList" :key="index">
-                    <div class="check">
-                        <span class="circle"  @click="chooseOneAddress(index)">
-                            <i class="icon iconfont icon-weixuanzhong" :class="index === defaultIndex? 'icon-juxing':'icon-icon-weixuanzhong'"></i>
+    <div class='receiveAdress'>
+         <top-nav :title='name'></top-nav>
+        <div class='main-ct'>
+            <div class='adress-ct'>
+                <div class='item' v-for='(address,index) in addressList' :key='index'>
+                    <div class='check'>
+                        <span class='circle'  @click='chooseOneAddress(index)'>
+                            <i class='icon iconfont icon-weixuanzhong' :class='index === defaultIndex? 'icon-juxing':'icon-icon-weixuanzhong''></i>
                         </span>
                     </div>
-                    <div class="midd">
-                        <div class="info">
-                            <span class="name">{{address.customerName}}</span>
-                            <span class="tel">{{address.customerPhone}}</span>
+                    <div class='midd'>
+                        <div class='info'>
+                            <span class='name'>{{address.customerName}}</span>
+                            <span class='tel'>{{address.customerPhone}}</span>
                         </div>
-                        <p class="detail">{{address.detailAdress}}</p>
+                        <p class='detail'>{{address.detailAdress}}</p>
                     </div>
-                    <div class="delet-btn" @click="deleteOneAddress(address.id)">删除</div>
+                    <div class='delet-btn' @click='deleteOneAddress(address.id)'>删除</div>
                 </div>
             </div>
-            <div class="add-address-btn">
-                <router-link to="/receiveInfo">
-                    <i class="icon iconfont icon-jia"></i>新增地址
+            <div class='add-address-btn'>
+                <router-link to='/receiveInfo'>
+                    <i class='icon iconfont icon-jia'></i>新增地址
                 </router-link>
             </div>
         </div>
@@ -29,61 +29,61 @@
 </template>
 
 <script>
-import TopNav from "@/components/TopNav/TopNav";
-import func from "@/utils/func";
-import { Toast, MessageBox } from "mint-ui";
-import localEvent from "@/store/local";
+import TopNav from '@/components/TopNav/TopNav'
+import func from '@/utils/func'
+import { Toast, MessageBox } from 'mint-ui'
+import localEvent from '@/store/local'
 
 export default {
-  name: "center",
+  name: 'center',
   data() {
     return {
-      name: "收货地址",
-      msg: "I am receive Address",
+      name: '收货地址',
+      msg: 'I am receive Address',
       defaultIndex: null,
       addressList: null
-    };
+    }
   },
   created() {
-    this.getAddressInfoList();
-    this.defaultIndex = localEvent.StorageGetter("defaultIndex")
-      ? localEvent.StorageGetter("defaultIndex")
-      : 0;
+    this.getAddressInfoList()
+    this.defaultIndex = localEvent.StorageGetter('defaultIndex')
+      ? localEvent.StorageGetter('defaultIndex')
+      : 0
   },
   methods: {
     // 获取所有的地址
     getAddressInfoList() {
-      func.axiosGet("/getReceiveByUserId?userId=1", response => {
-        this.addressList = response.data;
+      func.axiosGet('/getReceiveByUserId?userId=1', response => {
+        this.addressList = response.data
         localEvent.StorageSetter(
-          "AdressInfo",
+          'AdressInfo',
           this.addressList[this.defaultIndex]
-        );
-      });
+        )
+      })
     },
     // 选中某个地址
     chooseOneAddress(index) {
-      this.defaultIndex = index;
-      localEvent.StorageSetter("defaultIndex", index);
-      localEvent.StorageSetter("AdressInfo", this.addressList[index]);
+      this.defaultIndex = index
+      localEvent.StorageSetter('defaultIndex', index)
+      localEvent.StorageSetter('AdressInfo', this.addressList[index])
     },
     // 删除某个地址
     deleteOneAddress(id) {
-      MessageBox.confirm("确定删除本地址")
+      MessageBox.confirm('确定删除本地址')
         .then(action => {
-          func.axiosGet("/delReceiveById?id=" + id, response => {
-            Toast(response.data.msg);
-            this.getAddressInfoList();
-          });
+          func.axiosGet('/delReceiveById?id=' + id, response => {
+            Toast(response.data.msg)
+            this.getAddressInfoList()
+          })
         })
-        .then();
+        .then()
     }
   },
   components: { TopNav }
-};
+}
 </script>
 
-<style lang="less" scoped>
+<style lang='less' scoped>
 .receiveAdress {
   .main-ct {
     background-color: #fff;

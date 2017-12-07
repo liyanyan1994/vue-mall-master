@@ -1,19 +1,19 @@
 <template>
-  <div class="historyScann">
-    <top-nav :title="name"></top-nav>
-    <div class="main-ct">
-        <div class="history-list">
-            <div class="history-item" @click="toProductDetail(his)" v-for="(his,index) in historyList" :key="index">
-                <a class="item-link">
-                    <div class="item-inner">
-                        <img :src="his.img_url">
+  <div class='historyScann'>
+    <top-nav :title='name'></top-nav>
+    <div class='main-ct'>
+        <div class='history-list'>
+            <div class='history-item' @click='toProductDetail(his)' v-for='(his,index) in historyList' :key='index'>
+                <a class='item-link'>
+                    <div class='item-inner'>
+                        <img :src='his.img_url'>
                     </div>
                 </a>
-                <p class="name">{{his.name}}</p>
-                <div class="price-wrapper">
-                    <span class="grally-price">￥{{his.price}}</span>
-                    <span class="mark-price">￥{{his.price}}</span>
-                    <span class="discount">6.4折</span>
+                <p class='name'>{{his.name}}</p>
+                <div class='price-wrapper'>
+                    <span class='grally-price'>￥{{his.price}}</span>
+                    <span class='mark-price'>￥{{his.price}}</span>
+                    <span class='discount'>6.4折</span>
                 </div>
             </div>
         </div>
@@ -22,33 +22,33 @@
 </template>
 
 <script>
-import TopNav from "@/components/TopNav/TopNav";
-import localEvent from "@/store/local";
+import TopNav from '@/components/TopNav/TopNav'
+import localEvent from '@/store/local'
 
 export default {
-  name: "historyScann",
+  name: 'historyScann',
   data() {
     return {
-      name: "浏览历史",
-      msg: "I am historyScann"
-    };
+      name: '浏览历史',
+      msg: 'I am historyScann'
+    }
   },
   computed: {
     historyList() {
-      return localEvent.StorageGetter("localStore")
+      return localEvent.StorageGetter('localStore')
     }
   },
   methods: {
     toProductDetail(obj) {
-      this.$store.dispatch("chooseGoodId", obj.goodId);
-      this.$router.push({ name: "productDetail", params: { detailObj: obj } });
+      this.$store.dispatch('chooseGoodId', obj.goodId)
+      this.$router.push({ name: 'productDetail', params: { detailObj: obj }})
     }
   },
   components: { TopNav }
-};
+}
 </script>
 
-<style  lang="less" scoped>
+<style  lang='less' scoped>
 .historyScann {
   .main-ct {
     .history-list {

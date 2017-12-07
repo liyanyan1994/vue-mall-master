@@ -1,118 +1,118 @@
 <template>
-  <div class="productDetail">
-        <top-nav :title="name"></top-nav>
-        <div class="main-ct">
-            <div class="top-ct">
-                <div class="swpier-ct">
-                    <img :src="productInfo.head_img">
+  <div class='productDetail'>
+        <top-nav :title='name'></top-nav>
+        <div class='main-ct'>
+            <div class='top-ct'>
+                <div class='swpier-ct'>
+                    <img :src='productInfo.head_img'>
                 </div>
-                <div class="title-ct">
-                    <p class="name">{{productInfo.name}}</p>
-                    <p class="count">￥{{productInfo.price}}</p>
-                </div>
-            </div>
-            <div class="detail-ct">
-                <second-title msg="商品详情" class="second-t"></second-title>
-                <div class="product-img-ct">
-                    <img v-for="(detail,index) in detailImgUrl" :key=index  :src="detail"/>
+                <div class='title-ct'>
+                    <p class='name'>{{productInfo.name}}</p>
+                    <p class='count'>￥{{productInfo.price}}</p>
                 </div>
             </div>
-        </div>
-        <div class="bottom-ct">
-            <div class="bottom-inner">
-                 <div class="count-of-car" @click="popupVisible = true">
-                    <i class="icon iconfont icon-cart"></i>
+            <div class='detail-ct'>
+                <second-title msg='商品详情' class='second-t'></second-title>
+                <div class='product-img-ct'>
+                    <img v-for='(detail,index) in detailImgUrl' :key=index  :src='detail'/>
                 </div>
-                <div class="submit-box" @click="popupVisible = true">加入购物车</div>
             </div>
         </div>
-         <mt-popup v-model="popupVisible"  position="bottom" class="popup">
-            <div class="popup-ct">
-                <div class="popup-one">
-                    <div class="img-ct">
-                        <img :src="productInfo.head_img">
+        <div class='bottom-ct'>
+            <div class='bottom-inner'>
+                 <div class='count-of-car' @click='popupVisible = true'>
+                    <i class='icon iconfont icon-cart'></i>
+                </div>
+                <div class='submit-box' @click='popupVisible = true'>加入购物车</div>
+            </div>
+        </div>
+         <mt-popup v-model='popupVisible'  position='bottom' class='popup'>
+            <div class='popup-ct'>
+                <div class='popup-one'>
+                    <div class='img-ct'>
+                        <img :src='productInfo.head_img'>
                     </div>
-                    <div class="pro-guige">
-                        <p class="count">￥{{productInfo.price}}</p>
-                        <p class="cun">库存12332件</p>
-                        <p class="size">已选："100ml"</p>
+                    <div class='pro-guige'>
+                        <p class='count'>￥{{productInfo.price}}</p>
+                        <p class='cun'>库存12332件</p>
+                        <p class='size'>已选：'100ml'</p>
                     </div>
-                    <div class="close-ct" @click="popupVisible=false">
-                        <i class="icon iconfont icon-guanbi"></i>
+                    <div class='close-ct' @click='popupVisible=false'>
+                        <i class='icon iconfont icon-guanbi'></i>
                     </div>
                 </div>
-                <div class="popup-two">
-                    <p class="title">化妆品净含量</p>
-                    <div class="size-div">100ml</div>
+                <div class='popup-two'>
+                    <p class='title'>化妆品净含量</p>
+                    <div class='size-div'>100ml</div>
                 </div>
-                <div class="popup-three">
+                <div class='popup-three'>
                     <div>购买数量</div>
-                    <add-reduce-btn :goodNum="productInfo.num" @numAdd="goodNumAdd" @numReduce="goodNumReduce"></add-reduce-btn>
+                    <add-reduce-btn :goodNum='productInfo.num' @numAdd='goodNumAdd' @numReduce='goodNumReduce'></add-reduce-btn>
                 </div>
             </div>
-            <confirm-btn class="popup-btn" @click.native="toCart(productInfo)"></confirm-btn>
+            <confirm-btn class='popup-btn' @click.native='toCart(productInfo)'></confirm-btn>
         </mt-popup>
   </div>
 </template>
 
 <script>
-import TopNav from "@/components/TopNav/TopNav";
-import ConfirmBtn from "@/components/CommonBtn/ConfirmBtn";
-import SecondTitle from "@/components/SecondTitle/SecondTitle";
-import AddReduceBtn from "@/components/StyleCommon/AddReduceBtn";
-import { Popup } from "mint-ui";
-import { mapGetters } from "vuex";
-import localEvent from "@/store/local";
+import TopNav from '@/components/TopNav/TopNav'
+import ConfirmBtn from '@/components/CommonBtn/ConfirmBtn'
+import SecondTitle from '@/components/SecondTitle/SecondTitle'
+import AddReduceBtn from '@/components/StyleCommon/AddReduceBtn'
+import { Popup } from 'mint-ui'
+import { mapGetters } from 'vuex'
+import localEvent from '@/store/local'
 export default {
-  name: "dutyFree",
+  name: 'dutyFree',
   data() {
     return {
-      name: "商品详情",
-      msg: "I am productDetail",
+      name: '商品详情',
+      msg: 'I am productDetail',
       popupVisible: false
       //   productInfo: {}
-    };
+    }
   },
   components: { TopNav, SecondTitle, Popup, AddReduceBtn, ConfirmBtn },
   created() {
     if (this.$route.params.detailObj.goodId) {
-      this.$store.dispatch("getGoodDetail", this.$route.params.detailObj.goodId);
+      this.$store.dispatch('getGoodDetail', this.$route.params.detailObj.goodId)
     }
   },
   destroyed() {
-    console.log("destoryed");
-    localEvent.LocalStoreSetting(this.productInfo);
+    console.log('destoryed')
+    localEvent.LocalStoreSetting(this.productInfo)
   },
   computed: {
     ...mapGetters({
-      productInfo: "goodDetail"
+      productInfo: 'goodDetail'
     }),
     detailImgUrl() {
       if (this.productInfo.detail_img) {
-        return this.productInfo.detail_img.split(",");
+        return this.productInfo.detail_img.split(',')
       }
     }
   },
   methods: {
     showBottom() {
-      this.popupVisible = true;
+      this.popupVisible = true
     },
     goodNumAdd() {
-      this.$store.dispatch("goodNumAdd", this.productInfo.id);
+      this.$store.dispatch('goodNumAdd', this.productInfo.id)
     },
     goodNumReduce() {
-      console.log(this.productInfo.id);
-      this.$store.dispatch("goodNumReduce", this.productInfo.id);
+      console.log(this.productInfo.id)
+      this.$store.dispatch('goodNumReduce', this.productInfo.id)
     },
     toCart(p) {
-      this.$store.dispatch("addToCart", p);
-      this.$router.push({ path: "/cart" });
+      this.$store.dispatch('addToCart', p)
+      this.$router.push({ path: '/cart' })
     }
   }
-};
+}
 </script>
 
-<style  lang="less" scoped>
+<style  lang='less' scoped>
 .productDetail {
   .main-ct {
     .top-ct {

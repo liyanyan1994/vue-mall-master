@@ -1,30 +1,30 @@
 <template>
-  <div class="indexPage">
+  <div class='indexPage'>
     <keep-alive>
         <router-view></router-view>
     </keep-alive>
-    <div class="bottom-nav">
-        <router-link to="/home">
+    <div class='bottom-nav'>
+        <router-link to='/home'>
             <div>
-                 <i class="icon iconfont icon-shouye"/>
+                 <i class='icon iconfont icon-shouye'/>
                 <span>首页</span>
             </div>
         </router-link> 
-        <router-link to="/dutyFree">
+        <router-link to='/dutyFree'>
             <div>
-                <i class="icon iconfont icon-discount"/>
+                <i class='icon iconfont icon-discount'/>
                 <span>免税店</span>
             </div>
         </router-link>
         <router-link :to="{path:'/cart',activeClass:'bottom-nav-class'}">
             <div>
-                <i class="icon iconfont icon-cart"/>
+                <i class='icon iconfont icon-cart'/>
                 <span>购物车</span>
             </div>
         </router-link>
-        <router-link to="/center">
+        <router-link to='/center'>
             <div>
-                <i class="icon iconfont icon-account"/>
+                <i class='icon iconfont icon-account'/>
                 <span>我的</span>
             </div>
         </router-link>
@@ -34,21 +34,21 @@
 
 <script>
 export default {
-  name: "indexPage",
+  name: 'indexPage',
   data() {
     return {
-      selected: "home"
-    };
+      selected: 'home'
+    }
   },
   methods: {
     showCart(type) {
-      this.$store.dispatch("chooseMenu", type);
+      this.$store.dispatch('chooseMenu', type)
     }
   }
-};
+}
 </script>
 
-<style lang="scss" scoped>
+<style lang='scss' scoped>
 .indexPage {
   .bottom-nav {
     position: fixed;

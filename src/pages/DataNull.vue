@@ -1,24 +1,24 @@
 <template>
-  <div class="data-null">
-    <i class="icon iconfont" :class="dataIcon"></i>
+  <div class='data-null'>
+    <i class='icon iconfont' :class='dataIcon'></i>
     <p>{{dataText}}</p>
   </div>
 </template>
-<script type="text/ecmascript-6">
+<script type='text/ecmascript-6'>
 export default {
   props: {
     dataText: {
       type: String,
-      default: "数据为空"
+      default: '数据为空'
     },
     dataIcon: {
       type: String,
-      default: "icon-meiyoushuju"
+      default: 'icon-meiyoushuju'
     }
   }
-};
+}
 </script>
-<style  lang="less" scoped>
+<style  lang='less' scoped>
 .data-null {
   padding: 2rem .2rem;
   height: 2rem;

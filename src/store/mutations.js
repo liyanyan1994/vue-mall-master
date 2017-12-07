@@ -56,34 +56,34 @@ export default {
     }
   },
   [types.CHOOSE_ONE_GOOD](state, index) {
-    if (state.cartGoods[index]["checked"]) {
+    if (state.cartGoods[index]['checked']) {
       // 当前为选中，点击之后为未选中
-      state.cartGoods[index]["checked"] = false;
-      state.allChecked = false;
+      state.cartGoods[index]['checked'] = false
+      state.allChecked = false
     } else {
       // 当前为未选中，点击之后为选中
-      state.cartGoods[index]["checked"] = true;
+      state.cartGoods[index]['checked'] = true
     }
   },
   [types.IS_CHOOSE_ALL](state) {
-    let flag1 = true;
-    for (let good in state.cartGoods) {
+    let flag1 = true
+    for (const good in state.cartGoods) {
       if (state.cartGoods[good].checked === false) {
-        flag1 = false;
-        break;
+        flag1 = false
+        break
       }
     }
-    flag1 === true ? (state.allChecked = true) : (state.allChecked = false);
+    flag1 === true ? (state.allChecked = true) : (state.allChecked = false)
   },
   [types.CHOOSE_ALL_GOODS](state) {
-    let flag = true;
+    let flag = true
     if (state.allChecked) {
-      flag = false;
+      flag = false
     }
-    for (let good in state.cartGoods) {
-      state.cartGoods[good].checked = flag;
+    for (const good in state.cartGoods) {
+      state.cartGoods[good].checked = flag
     }
-    state.allChecked = !state.allChecked;
+    state.allChecked = !state.allChecked
   },
   [types.DELETE_ONE_GOOD](state, index) {
     state.added.splice(index, 1)

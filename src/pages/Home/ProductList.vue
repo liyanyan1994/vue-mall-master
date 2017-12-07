@@ -1,19 +1,19 @@
 <template>
-  <div class="dutyFree">
-    <top-nav :title="name"></top-nav>
-    <div class="main-ct">
-        <div class="product-list">
-            <div class="product-item" @click="toProductDetail(pro)" v-for="(pro,index) in productList" :key="index">
-                <a class="item-link">
-                    <div class="item-inner">
-                        <img :src="pro.img_url">
+  <div class='dutyFree'>
+    <top-nav :title='name'></top-nav>
+    <div class='main-ct'>
+        <div class='product-list'>
+            <div class='product-item' @click='toProductDetail(pro)' v-for='(pro,index) in productList' :key='index'>
+                <a class='item-link'>
+                    <div class='item-inner'>
+                        <img :src='pro.img_url'>
                     </div>
                 </a>
-                <p class="name">{{pro.name}}</p>
-                <div class="price-wrapper">
-                    <span class="grally-price">￥{{pro.price}}</span>
-                    <span class="mark-price">￥{{pro.price}}</span>
-                    <span class="discount">{{pro.discount}}</span>
+                <p class='name'>{{pro.name}}</p>
+                <div class='price-wrapper'>
+                    <span class='grally-price'>￥{{pro.price}}</span>
+                    <span class='mark-price'>￥{{pro.price}}</span>
+                    <span class='discount'>{{pro.discount}}</span>
                 </div>
             </div>
         </div>
@@ -22,36 +22,36 @@
 </template>
 
 <script>
-import TopNav from "@/components/TopNav/TopNav";
-import { mapState } from "vuex";
+import TopNav from '@/components/TopNav/TopNav'
+import { mapState } from 'vuex'
 
 export default {
-  name: "dutyFree",
+  name: 'dutyFree',
   data() {
     return {
-      name: "商品列表",
-      msg: "I am dutyFree"
-    };
+      name: '商品列表',
+      msg: 'I am dutyFree'
+    }
   },
   created() {
-    this.$store.dispatch("getAllProducts");
+    this.$store.dispatch('getAllProducts')
   },
   computed: {
     ...mapState({
-      productList: "productList"
+      productList: 'productList'
     })
   },
   methods: {
     toProductDetail(obj) {
-      this.$store.dispatch("chooseGoodId", obj.id);
-      this.$router.push({ name: "productDetail", params: { detailObj: obj } });
+      this.$store.dispatch('chooseGoodId', obj.id)
+      this.$router.push({ name: 'productDetail', params: { detailObj: obj }})
     }
   },
   components: { TopNav }
-};
+}
 </script>
 
-<style  lang="less" scoped>
+<style  lang='less' scoped>
 .dutyFree {
   .main-ct {
     .product-list {

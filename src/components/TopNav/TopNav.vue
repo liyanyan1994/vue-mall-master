@@ -1,15 +1,15 @@
 <template>
-  <div class="top-nav" v-show="bar">
-    <div class="nav-left">
-      <i class="icon iconfont icon-back" @click="back"></i>
+  <div class='top-nav' v-show='bar'>
+    <div class='nav-left'>
+      <i class='icon iconfont icon-back' @click='back'></i>
     </div>
-    <div class="nav-title">{{title}}</div>
-    <div class="nav-right"></div>
+    <div class='nav-title'>{{title}}</div>
+    <div class='nav-right'></div>
   </div>
 </template>
 
-<script type="text/ecmascript-6">
-import { mapState } from "vuex";
+<script type='text/ecmascript-6'>
+import { mapState } from 'vuex'
 export default {
   props: {
     title: {
@@ -18,16 +18,16 @@ export default {
   },
   methods: {
     back() {
-      this.$router.go(-1);
+      this.$router.go(-1)
     }
   },
   computed: {
-    ...mapState(["bar"])
+    ...mapState(['bar'])
   }
-};
+}
 </script>
 
-<style lang="less" type="text/less">
+<style lang='less' type='text/less'>
 .top-nav {
   position: fixed;
   display: flex;

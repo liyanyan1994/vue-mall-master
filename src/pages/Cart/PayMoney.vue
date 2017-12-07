@@ -1,92 +1,92 @@
 <template>
-  <div class="payMoney">
-        <top-nav :title="name" class="top-nav"></top-nav>
-        <div class="main-ct" v-if="payMentGoods.length">
-            <div class="one-pay-ct">
-                <div class="title">
-                    <div class="time">2016-09-10</div>
-                    <div class="name">待付款</div>
+  <div class='payMoney'>
+        <top-nav :title='name' class='top-nav'></top-nav>
+        <div class='main-ct' v-if='payMentGoods.length'>
+            <div class='one-pay-ct'>
+                <div class='title'>
+                    <div class='time'>2016-09-10</div>
+                    <div class='name'>待付款</div>
                 </div>
-                <div class="one-item-ct">
-                    <div class="item-ct">
-                        <div class="item" v-for="(payment,index) in payMentGoods" :key="index">
-                            <div class="left">
-                                <img :src="payment.imgUrl"></img>
-                                <div class="info">
-                                    <p class="name">{{payment.name}}</p>
-                                    <div class="input-number">*{{payment.num}}</div>
+                <div class='one-item-ct'>
+                    <div class='item-ct'>
+                        <div class='item' v-for='(payment,index) in payMentGoods' :key='index'>
+                            <div class='left'>
+                                <img :src='payment.imgUrl'></img>
+                                <div class='info'>
+                                    <p class='name'>{{payment.name}}</p>
+                                    <div class='input-number'>*{{payment.num}}</div>
                                 </div>
                             </div>
-                            <div class="count">￥{{payment.price * payment.num}}</div>
+                            <div class='count'>￥{{payment.price * payment.num}}</div>
                         </div>
                     </div>
-                    <div class="total">
-                        <span class="jian">共{{totalCount}}件</span>
-                        <span class="count">合计：￥{{totalMoney}}</span>
+                    <div class='total'>
+                        <span class='jian'>共{{totalCount}}件</span>
+                        <span class='count'>合计：￥{{totalMoney}}</span>
                     </div>
-                    <div class="pay">
-                        <confirm-btn class="btn" msg="去付款"></confirm-btn>
+                    <div class='pay'>
+                        <confirm-btn class='btn' msg='去付款'></confirm-btn>
                     </div>
                 </div>
             </div>
         </div>
         <div v-else>
-            <data-null class="main-ct" dataIcon="icon-kongshuju" dataText="暂无待付款订单"></data-null>
+            <data-null class='main-ct' dataIcon='icon-kongshuju' dataText='暂无待付款订单'></data-null>
         </div>
   </div>
 </template>
 
 <script>
-import TopNav from "@/components/TopNav/TopNav";
-import ConfirmBtn from "@/components/CommonBtn/ConfirmBtn";
-import DataNull from "@/pages/DataNull";
+import TopNav from '@/components/TopNav/TopNav'
+import ConfirmBtn from '@/components/CommonBtn/ConfirmBtn'
+import DataNull from '@/pages/DataNull'
 export default {
-  name: "payMoney",
+  name: 'payMoney',
   data() {
     return {
-      name: "待付款",
-      msg: "I am payMoney"
-    };
+      name: '待付款',
+      msg: 'I am payMoney'
+    }
   },
   computed: {
     payMentGoods() {
-      var arr = [];
-      const cartGoods = this.$store.state.cartGoods;
-      for (let index in cartGoods) {
+      var arr = []
+      const cartGoods = this.$store.state.cartGoods
+      for (const index in cartGoods) {
         if (cartGoods[index].checked) {
-          arr.push(cartGoods[index]);
+          arr.push(cartGoods[index])
         }
       }
-      return arr;
+      return arr
     },
     totalMoney() {
-      let money = 0;
+      let money = 0
       if (this.payMentGoods.length) {
         this.payMentGoods.map(item => {
           if (item.checked) {
-            money += parseFloat(item.price) * parseFloat(item.num);
+            money += parseFloat(item.price) * parseFloat(item.num)
           }
-        });
+        })
       }
-      return money;
+      return money
     },
     totalCount() {
-      let total = 0;
+      let total = 0
       if (this.payMentGoods.length) {
         this.payMentGoods.map(item => {
           if (item.checked) {
-            total += item.num;
+            total += item.num
           }
-        });
+        })
       }
-      return total;
+      return total
     }
   },
   components: { TopNav, ConfirmBtn, DataNull }
-};
+}
 </script>
 
-<style  lang="less" scoped>
+<style  lang='less' scoped>
 .payMoney {
   .main-ct {
     .one-pay-ct {

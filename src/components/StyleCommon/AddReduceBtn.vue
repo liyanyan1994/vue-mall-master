@@ -1,18 +1,18 @@
 <template>
-    <div class="add-reduce">
-        <span class="reduce">
-            <i class="icon iconfont icon-jian" @click="reduceGood"></i>
+    <div class='add-reduce'>
+        <span class='reduce'>
+            <i class='icon iconfont icon-jian' @click='reduceGood'></i>
         </span>
-        <input class="good-num" :value="goodNum" readonly="readonly">
-        <span class="add">
-                <i class="icon iconfont icon-jia"  @click="addGood" ></i>
+        <input class='good-num' :value='goodNum' readonly='readonly'>
+        <span class='add'>
+                <i class='icon iconfont icon-jia'  @click='addGood' ></i>
         </span>
     </div>
 </template>
 <script>
 export default {
   data() {
-    return {};
+    return {}
   },
   props: {
     goodNum: {
@@ -22,16 +22,16 @@ export default {
   },
   methods: {
     reduceGood() {
-      this.$emit("numReduce");
+      this.$emit('numReduce')
     },
     addGood() {
-      this.$emit("numAdd");
+      this.$emit('numAdd')
     }
   }
-};
+}
 </script>
 
-<style lang="less">
+<style lang='less'>
 .add-reduce {
   color: #dd9988;
   font-size: 0;

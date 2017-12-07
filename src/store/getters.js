@@ -7,10 +7,10 @@ export const allChecked = state => {
 }
 
 export const cartGoods = state => {
-  let cartGoodList = state.added.map(add => {
+  const cartGoodList = state.added.map(add => {
     const good = state.productList.find(g => g.id === add.id)
-    let isChecked = false;
-    for (let index in state.cartGoods) {
+    let isChecked = false
+    for (const index in state.cartGoods) {
       if (state.cartGoods[index].id === add.id) {
         isChecked = state.cartGoods[index].checked
       }
